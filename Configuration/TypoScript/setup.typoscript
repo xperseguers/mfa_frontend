@@ -1,0 +1,26 @@
+plugin {
+    tx_mfafrontend {
+        view {
+            layoutRootPaths {
+                0 = EXT:mfa_frontend/Resources/Private/Layouts/
+                1 = {$plugin.tx_mfa_frontend.view.layoutRootPath}
+            }
+            partialRootPaths {
+                0 = EXT:mfa_frontend/Resources/Private/Partials/
+                1 = {$plugin.tx_mfafrontend.view.partialRootPath}
+            }
+            templateRootPaths {
+                0 = EXT:mfa_frontend/Resources/Private/Templates/
+                1 = {$plugin.tx_mfafrontend.view.templateRootPath}
+            }
+        }
+    }
+
+    tx_felogin_login {
+        view {
+            layoutRootPaths.11 = {$plugin.tx_mfafrontend.tx_felogin_login.view.layoutRootPath}
+            partialRootPaths.11 = {$plugin.tx_mfafrontend.tx_felogin_login.view.partialRootPath}
+            templateRootPaths.11 = {$plugin.tx_mfafrontend.tx_felogin_login.view.templateRootPath}
+        }
+    }
+}

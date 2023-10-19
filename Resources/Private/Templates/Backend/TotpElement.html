@@ -1,0 +1,49 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:be.pageRenderer
+    includeRequireJsModules="{
+        0: 'TYPO3/CMS/MfaFrontend/Backend/TotpElement'
+    }"
+/>
+
+<div class="form-group" style="max-width: 360px">
+    <f:if condition="{isEnabled}">
+        <f:then>
+            <f:render
+                partial="Backend/Form/OneTimePassword"
+                arguments="{
+                    prefix: prefix
+                }"
+            />
+
+            <div class="text-muted">
+                <f:translate key="LLL:EXT:cf_google_authenticator/Resources/Private/Language/locallang_be.xlf:disableAuthenticator"/>
+            </div>
+        </f:then>
+        <f:else>
+            <f:render
+                partial="Backend/Form/QrCode"
+                arguments="{
+                    totpSecret: totpSecret,
+                    prefix: prefix
+                }"
+            />
+            <f:render
+                partial="Backend/Form/Secret"
+                arguments="{
+                    secret: totpSecret.secretKey,
+                    prefix: prefix
+                }"
+            />
+            <f:render
+                partial="Backend/Form/OneTimePassword"
+                arguments="{
+                    prefix: prefix
+                }"
+            />
+        </f:else>
+    </f:if>
+</div>
+
+</html>

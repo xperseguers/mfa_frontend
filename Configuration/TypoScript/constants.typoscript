@@ -1,0 +1,32 @@
+plugin {
+    tx_mfafrontend {
+        view {
+            # cat=plugin.tx_mfafrontend/file; type=string; label=Path to template layouts
+            layoutRootPath = EXT:mfa_frontend/Resources/Private/Layouts/
+            # cat=plugin.tx_mfafrontend/file; type=string; label=Path to template partials
+            partialRootPath = EXT:mfa_frontend/Resources/Private/Partials/
+            # cat=plugin.tx_mfafrontend/file; type=string; label=Path to template root
+            templateRootPath = EXT:mfa_frontend/Resources/Private/Templates/
+        }
+
+        tx_felogin_login {
+            view {
+                layoutRootPath = EXT:mfa_frontend/Resources/Private/EXT_felogin/Layouts/
+                partialRootPath = EXT:mfa_frontend/Resources/Private/EXT_felogin/Partials/
+                templateRootPath = EXT:mfa_frontend/Resources/Private/EXT_felogin/Templates/
+            }
+        }
+    }
+}
+
+[typo3.branch == "11.5"]
+    plugin {
+        tx_mfa_frontend {
+            tx_felogin_login {
+                view {
+                    templateRootPath = EXT:mfa_frontend/Resources/Private/EXT_felogin/Templates/TYPO3v11/
+                }
+            }
+        }
+    }
+[global]

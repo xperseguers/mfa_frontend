@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend">
+        <header/>
+        <body>
+            <trans-unit id="qrImage">
+                <source>Google Authenticator QR-Code</source>
+            </trans-unit>
+            <trans-unit id="secret">
+                <source>Secret</source>
+            </trans-unit>
+            <trans-unit id="otp">
+                <source>One-time password</source>
+            </trans-unit>
+
+            <trans-unit id="storeSecret">
+                <source>Store this secret in a safe place.</source>
+            </trans-unit>
+            <trans-unit id="recoverAuthenticator">
+                <source>You will need this if you ever have to recover your authenticator.</source>
+            </trans-unit>
+            <trans-unit id="disableAuthenticator">
+                <source>To disable Google Authenticator, uncheck the checkbox above and enter a valid one-time password.</source>
+            </trans-unit>
+
+            <trans-unit id="enable.success.title">
+                <source>Success!</source>
+            </trans-unit>
+            <trans-unit id="enable.success.body">
+                <source>Your account is now protected by a two-factor authentication.</source>
+            </trans-unit>
+            <trans-unit id="disable.success.title">
+                <source>Success!</source>
+            </trans-unit>
+            <trans-unit id="disable.success.body">
+                <source>You disabled the two-factor authentication.</source>
+            </trans-unit>
+            <trans-unit id="enable.error.title">
+                <source>Oops!</source>
+            </trans-unit>
+            <trans-unit id="enable.error.body">
+                <source>The given one-time password is invalid or has expired.</source>
+            </trans-unit>
+            <trans-unit id="disable.error.title">
+                <source>Oops!</source>
+            </trans-unit>
+            <trans-unit id="disable.error.body">
+                <source>The given one-time password is invalid or has expired.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

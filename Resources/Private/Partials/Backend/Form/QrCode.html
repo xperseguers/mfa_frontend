@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:mf="http://typo3.org/ns/Causal/MfaFrontend/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="mb-2">
+    <mf:qrImage secret="{totpSecret}"
+              alt="{f:translate(key: 'qrImage', extensionName: 'mfa_frontend')}"
+              title="Secret: {totpSecret.secretKey}"
+    />
+</div>
+
+</html>
