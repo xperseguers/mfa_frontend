@@ -1,0 +1,44 @@
+{
+  "name": "causal/mfa-frontend",
+  "type": "typo3-cms-extension",
+  "description": "Enable MFA (Multi-Factor Authentication) for Frontend accounts.",
+  "keywords": [
+    "TYPO3 CMS",
+    "MFA",
+	"2FA",
+    "secure",
+    "security",
+    "protection"
+  ],
+  "homepage": "https://github.com/xperseguers/t3ext-mfa-frontend",
+  "support": {
+    "issues": "https://github.com/xperseguers/t3ext-mfa-frontend/issues"
+  },
+  "authors": [
+    {
+      "name": "Xavier Perseguers",
+      "email": "xavier@causal.ch",
+      "homepage": "https://www.causal.ch",
+      "role": "Developer"
+    }
+  ],
+  "license": "GPL-3.0-or-later",
+  "require": {
+    "php": ">=7.4.0 <=7.4.99 || >=8.0.0 <=8.2.99",
+    "typo3/cms-core": "^11 || ^12",
+    "chillerlan/php-qrcode": "^4.3 || 5.0-beta"
+  },
+  "autoload": {
+    "psr-4": {
+      "Causal\\MfaFrontend\\": "Classes/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "0.1.x-dev"
+    },
+    "typo3/cms": {
+      "extension-key": "mfa_frontend"
+    }
+  }
+}
