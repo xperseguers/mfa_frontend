@@ -7,6 +7,9 @@ services:
   Causal\MfaFrontend\:
     resource: '../Classes/*'
 
+  Causal\MfaFrontend\Backend\Form\FormDataProvider\TotpEditRow:
+    public: true
+
   Causal\MfaFrontend\Hook\DataHandler:
     public: true
 

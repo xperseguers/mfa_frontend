@@ -18,15 +18,41 @@ namespace Causal\MfaFrontend\Domain\Model;
 
 class TotpSettings
 {
+    protected array $mfa = [];
+
     protected bool $enabled = false;
 
     protected string $secret = '';
 
     public static function createFromRecord(array $record): self
     {
+        $mfa = json_decode($record['mfa_frontend'] ?? '', true) ?? [];
+
         return (new self())
-            ->setEnabled((bool)$record['tx_mfafrontend_enable'])
-            ->setSecret((string)$record['tx_mfafrontend_secret']);
+            ->setMfa($mfa)
+            ->setEnabled($mfa['totp']['active'] ?? false)
+            ->setSecret($mfa['totp']['secret'] ?? '');
+    }
+
+    public static function createFromVirtualData(array $data): self
+    {
+        return (new self())
+            ->setEnabled((bool)$data['tx_mfafrontend_enable'])
+            ->setSecret((string)$data['tx_mfafrontend_secret']);
+    }
+
+    public function getMfa(): array
+    {
+        return $this->mfa;
+    }
+
+    /**
+     * @internal
+     */
+    public function setMfa(array $mfa): self
+    {
+        $this->mfa = $mfa;
+        return $this;
     }
 
     public function isEnabled(): bool
@@ -53,9 +79,31 @@ class TotpSettings
 
     public function toArray(): array
     {
+        $mfa = $this->getMfa();
+
+        if (isset($mfa['totp'])) {
+            $currentSecret = $mfa['totp']['secret'] ?? '';
+            $currentEnabled = $mfa['totp']['active'] ?? false;
+            if ($currentSecret === $this->getSecret()
+                && $currentEnabled === $this->isEnabled()) {
+                // Nothing changed
+                return [
+                    'mfa_frontend' => json_encode($mfa),
+                ];
+            }
+        }
+
+        $mfa['totp'] = [
+            'secret' => $this->getSecret(),
+            'active' => $this->isEnabled(),
+            'created' => $GLOBALS['EXEC_TIME'],
+            'updated' => $GLOBALS['EXEC_TIME'],
+            'attempts' => 0,
+            'lastUsed' => 0,
+        ];
+
         return [
-            'tx_mfafrontend_enable' => $this->isEnabled() ? 1 : 0,
-            'tx_mfafrontend_secret' => $this->getSecret(),
+            'mfa_frontend' => json_encode($mfa),
         ];
     }
 }

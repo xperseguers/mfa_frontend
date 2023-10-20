@@ -24,6 +24,11 @@ $tempColumns = [
             'renderType' => 'MfaFrontendTotp',
         ],
     ],
+    'mfa_frontend' => [
+        'config' => [
+            'type' => 'passthrough',
+        ],
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $tempColumns);
