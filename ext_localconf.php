@@ -2,6 +2,24 @@
 defined('TYPO3') || die();
 
 (static function (string $_EXTKEY) {
+    // Service configuration
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService(
+        $_EXTKEY,
+        'auth',
+        \Causal\MfaFrontend\Service\MfaAuthenticationService::class,
+        [
+            'title' => 'Google Authenticator',
+            'description' => 'Enable Google 2FA for frontend login',
+            'subtype' => 'authUserFE',
+            'available' => true,
+            'priority' => 80,
+            'quality' => 80,
+            'os' => '',
+            'exec' => '',
+            'className' => \Causal\MfaFrontend\Service\MfaAuthenticationService::class,
+        ]
+    );
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         $_EXTKEY,
         'Setup',
