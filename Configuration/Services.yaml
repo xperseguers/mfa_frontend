@@ -6,3 +6,9 @@ services:
 
   Causal\MfaFrontend\:
     resource: '../Classes/*'
+
+  Causal\MfaFrontend\Hook\DataHandler:
+    public: true
+
+  Causal\MfaFrontend\Handler\TotpSetupHandler:
+    public: true

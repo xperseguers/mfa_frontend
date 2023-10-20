@@ -22,13 +22,12 @@ class SecretFactory
 {
     protected int $secretLength;
 
-    // For some reason the maniac who came up with base32 encoding decided they hated 0 and 1...
     protected const BASE32_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
     /**
      * @param int $secretLength Length of the encoded string, as such, it must be divisible by 8
      */
-    public function __construct(int $secretLength = 32)
+    public function __construct(int $secretLength = 16)
     {
         if ($secretLength === 0 || $secretLength % 8 > 0) {
             throw new \InvalidArgumentException(
