@@ -19,6 +19,7 @@ namespace Causal\MfaFrontend\Form\Element;
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
 use Causal\MfaFrontend\Domain\SecretFactory;
 use Causal\MfaFrontend\Event\DefineIssuerLayerEvent;
+use Causal\MfaFrontend\Trait\IssuerTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;
@@ -27,6 +28,8 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class TotpElement extends AbstractFormElement
 {
+    use IssuerTrait;
+
     protected EventDispatcherInterface $eventDispatcher;
 
     protected SecretFactory $secretFactory;
@@ -93,7 +96,7 @@ class TotpElement extends AbstractFormElement
             }
 
             $this->totpSecret = $this->secretFactory->create(
-                $this->getIssuer(),
+                $this->getIssuer($this->data['tableName']),
                 $this->getUsername(),
                 $secretKey
             );
@@ -102,43 +105,10 @@ class TotpElement extends AbstractFormElement
         return $this->totpSecret;
     }
 
-    protected function getIssuer(): string
-    {
-        return vsprintf(
-            '%s - %s',
-            [
-                $this->getSiteName(),
-                $this->getLayer(),
-            ]
-        );
-    }
-
     protected function getUsername(): string
     {
         // TODO: Add support for arbitrary field name?
         return $this->data['databaseRow']['username'] ?? '';
-    }
-
-    protected function getSiteName(): string
-    {
-        return $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'];
-    }
-
-    protected function getLayer(): string
-    {
-        $layer = '';
-
-        if ($this->data['tableName'] === 'fe_users') {
-            $layer = 'Frontend';
-        }
-
-        $event = new DefineIssuerLayerEvent(
-            $this->data['tableName'],
-            $layer
-        );
-        $this->eventDispatcher->dispatch($event);
-
-        return $event->getLayer();
     }
 
     protected function isTotpEnabled(): bool

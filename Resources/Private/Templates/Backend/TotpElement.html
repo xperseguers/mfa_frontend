@@ -18,17 +18,11 @@
             />
 
             <div class="text-muted">
-                <f:translate key="LLL:EXT:cf_google_authenticator/Resources/Private/Language/locallang_be.xlf:disableAuthenticator"/>
+                <f:translate key="backend.disableAuthenticator" extensionName="mfa_frontend"/>
             </div>
         </f:then>
         <f:else>
-            <f:render
-                partial="Backend/Form/QrCode"
-                arguments="{
-                    totpSecret: totpSecret,
-                    prefix: prefix
-                }"
-            />
+            <f:render partial="Backend/Form/QrCode" arguments="{totpSecret: totpSecret}"/>
             <f:render
                 partial="Backend/Form/Secret"
                 arguments="{

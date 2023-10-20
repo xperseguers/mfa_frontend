@@ -1,0 +1,94 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:security.ifAuthenticated>
+    <section>
+        <f:flashMessages/>
+
+        <f:form.validationResults for="someProperty">
+            <f:if condition="{validationResults.flattenedErrors}">
+                <ul class="errors">
+                    <f:for each="{validationResults.errors}" as="error">
+                        <li>{error.code}: {error}</li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </f:form.validationResults>
+
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 30rem;">
+                <f:form method="post" controller="Setup" action="update" object="{formData}" name="{formName}">
+                    <f:if condition="{isEnabled}">
+                        <f:then>
+                            <f:render section="disable-form" arguments="{_all}"/>
+                        </f:then>
+                        <f:else>
+                            <f:render section="enable-form" arguments="{_all}"/>
+                        </f:else>
+                    </f:if>
+                </f:form>
+            </div>
+        </div>
+    </section>
+</f:security.ifAuthenticated>
+
+<f:section name="disable-form">
+    <div class="body p-3">
+        <f:form.hidden id="field_tx_mfafrontend_secret" property="secret"/>
+        <f:render partial="Form/OneTimePassword" arguments="{_all}"/>
+    </div>
+
+    <div class="card-footer text-end">
+        <f:form.submit
+            class="btn btn-primary"
+            name="disable"
+            value="{f:translate(key:'action.disable', extensionName:'mfa_frontend')}"
+        />
+    </div>
+</f:section>
+
+<f:section name="enable-form">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <span class="badge bg-primary mt-1 float-start">1</span>
+            <h4 class="card-title ms-5">
+                <f:translate key="totp.step1.title" extensionName="mfa_frontend"/>
+            </h4>
+            <p>
+                <f:translate key="totp.step1.body" extensionName="mfa_frontend"/>
+            </p>
+            <div class="text-center">
+                <f:render partial="Form/QrCode" arguments="{totpSecret: totpSecret}"/>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <span class="badge bg-primary mt-1 float-start">2</span>
+            <h4 class="card-title ms-5">
+                <f:translate key="totp.step2.title" extensionName="mfa_frontend"/>
+            </h4>
+            <p>
+                <f:translate key="totp.step2.body" extensionName="mfa_frontend"/>
+            </p>
+            <f:render partial="Form/Secret"/>
+        </li>
+        <li class="list-group-item pb-4">
+            <span class="badge bg-primary mt-1 float-start">3</span>
+            <h4 class="card-title ms-5">
+                <f:translate key="totp.step3.title" extensionName="mfa_frontend"/>
+            </h4>
+            <p>
+                <f:translate key="totp.step3.body" extensionName="mfa_frontend"/>
+            </p>
+            <f:render partial="Form/OneTimePassword"/>
+        </li>
+    </ul>
+    <div class="card-footer text-end">
+        <f:form.submit
+            class="btn btn-primary"
+            name="enable"
+            value="{f:translate(key:'action.enable', extensionName:'mfa_frontend')}"
+        />
+    </div>
+</f:section>
+
+</html>

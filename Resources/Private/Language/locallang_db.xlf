@@ -12,6 +12,10 @@
             <trans-unit id="fe_users.tx_mfafrontend_secret">
                 <source>TOTP secret</source>
             </trans-unit>
+
+            <trans-unit id="plugin.setup">
+                <source>Two-Factor Authentication (2FA) Setup</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

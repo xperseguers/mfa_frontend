@@ -2,6 +2,17 @@
 defined('TYPO3') || die();
 
 (static function (string $_EXTKEY) {
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+        $_EXTKEY,
+        'Setup',
+        [
+            \Causal\MfaFrontend\Controller\SetupController::class => 'index,update',
+        ],
+        [
+            \Causal\MfaFrontend\Controller\SetupController::class => 'index,update',
+        ]
+    );
+
     // Register hooks into \TYPO3\CMS\Core\DataHandling\DataHandler
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][]
         = \Causal\MfaFrontend\Hook\DataHandler::class;
