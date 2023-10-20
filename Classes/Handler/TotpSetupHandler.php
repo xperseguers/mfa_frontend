@@ -61,6 +61,9 @@ class TotpSetupHandler
     {
         $this->totpSettingsDto = GeneralUtility::makeInstance(TotpSettingsDto::class);
 
+        $fieldArray = $this->preprocessFieldArrayDto->getFieldArray();
+        $newSettings = TotpSettings::createFromVirtualData($fieldArray);
+
         if ($this->isExistingUser()) {
             $record = $this->preprocessFieldArrayDto->getDataHandler()->recordInfo(
                 $this->preprocessFieldArrayDto->getTable(),
@@ -71,14 +74,13 @@ class TotpSetupHandler
                 $this->totpSettingsDto->setOldSettings(
                     TotpSettings::createFromRecord($record)
                 );
+                $newSettings->setMfa(
+                    $this->totpSettingsDto->getOldSettings()->getMfa()
+                );
             }
         }
 
-        $fieldArray = $this->preprocessFieldArrayDto->getFieldArray();
-
-        $this->totpSettingsDto->setNewSettings(
-            TotpSettings::createFromRecord($fieldArray)
-        );
+        $this->totpSettingsDto->setNewSettings($newSettings);
 
         $this->totpSettingsDto->setOneTimePassword(
             str_replace(' ', '', $fieldArray['tx_mfafrontend_otp'])

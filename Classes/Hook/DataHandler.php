@@ -62,20 +62,24 @@ class DataHandler
         }
 
         $otpFromFieldArray = &$incomingFieldArray['tx_mfafrontend_otp'];
-        // TODO: Is next line really needed?
+        /*
+        // TODO: Are next lines really needed?
         $otpFromPostData = $_POST['data'][$table]['tx_mfafrontend_otp'] ?? null;
 
         if ($otpFromFieldArray === null && $otpFromPostData !== null) {
             $otpFromFieldArray = $otpFromPostData;
         }
+        */
 
         $secretFromFieldArray = &$incomingFieldArray['tx_mfafrontend_secret'];
-        // TODO: Is next line really needed?
+        /*
+        // TODO: Are next lines really needed?
         $secretFromPostData = $_POST['data'][$table]['tx_mfafrontend_secret'] ?? null;
 
         if ($secretFromFieldArray === null && $secretFromPostData !== null) {
             $secretFromFieldArray = $secretFromPostData;
         }
+        */
 
         $preprocessFieldArrayDto = $this->getPreprocessFieldArrayDto(
             $incomingFieldArray,
@@ -86,6 +90,13 @@ class DataHandler
         $result = $this->getTotpSetupHandler()->process($preprocessFieldArrayDto);
 
         $incomingFieldArray = array_merge($incomingFieldArray, $result);
+
+        // Always unset virtual fields
+        unset(
+            $incomingFieldArray['tx_mfafrontend_enable'],
+            $incomingFieldArray['tx_mfafrontend_secret'],
+            $incomingFieldArray['tx_mfafrontend_otp']
+        );
     }
 
     /**
