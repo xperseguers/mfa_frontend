@@ -40,29 +40,14 @@
                 <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
             </trans-unit>
 
-            <trans-unit id="enable.success.title">
+            <trans-unit id="success.title">
                 <source>Success!</source>
             </trans-unit>
-            <trans-unit id="enable.success.body">
+            <trans-unit id="success.enable.body">
                 <source>Your account is now protected by a two-factor authentication.</source>
             </trans-unit>
-            <trans-unit id="disable.success.title">
-                <source>Success!</source>
-            </trans-unit>
-            <trans-unit id="disable.success.body">
-                <source>You disabled the two-factor authentication.</source>
-            </trans-unit>
-            <trans-unit id="enable.error.title">
-                <source>Oops!</source>
-            </trans-unit>
-            <trans-unit id="enable.error.body">
-                <source>The given one-time password is invalid or has expired.</source>
-            </trans-unit>
-            <trans-unit id="disable.error.title">
-                <source>Oops!</source>
-            </trans-unit>
-            <trans-unit id="disable.error.body">
-                <source>The given one-time password is invalid or has expired.</source>
+            <trans-unit id="success.disable.body">
+                <source>You disabled the two-factor authentication for your account.</source>
             </trans-unit>
 
             <trans-unit id="action.enable">
@@ -70,6 +55,10 @@
             </trans-unit>
             <trans-unit id="action.disable">
                 <source>Disable</source>
+            </trans-unit>
+
+            <trans-unit id="validator.otp.notvalid">
+                <source>The given one-time password is invalid or has expired.</source>
             </trans-unit>
         </body>
     </file>

@@ -14,25 +14,21 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Causal\MfaFrontend\Event;
+namespace Causal\MfaFrontend\Trait;
 
-final class CollectAllowedTablesEvent
+use TYPO3\CMS\Core\Authentication\Mfa\Provider\Totp;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+trait VerifyOtpTrait
 {
-    private array $tables;
-
-    public function __construct(array $tables)
+    private function verifyOneTimePassword(string $secret, string $oneTimePassword): bool
     {
-        $this->tables = $tables;
-    }
+        $totp = GeneralUtility::makeInstance(
+            Totp::class,
+            $secret,
+            'sha1'
+        );
 
-    public function getTables(): array
-    {
-        return $this->tables;
-    }
-
-    public function setTables(array $tables): self
-    {
-        $this->tables = $tables;
-        return $this;
+        return $totp->verifyTotp($oneTimePassword);
     }
 }

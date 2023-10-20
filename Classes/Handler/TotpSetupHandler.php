@@ -19,12 +19,14 @@ namespace Causal\MfaFrontend\Handler;
 use Causal\MfaFrontend\Domain\Model\Dto\PreprocessFieldArrayDto;
 use Causal\MfaFrontend\Domain\Model\Dto\TotpSettingsDto;
 use Causal\MfaFrontend\Domain\Model\TotpSettings;
+use Causal\MfaFrontend\Trait\VerifyOtpTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use TYPO3\CMS\Core\Authentication\Mfa\Provider\Totp;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TotpSetupHandler
 {
+    use VerifyOtpTrait;
+
     protected EventDispatcherInterface $eventDispatcher;
 
     protected ?PreprocessFieldArrayDto $preprocessFieldArrayDto;
@@ -170,16 +172,5 @@ class TotpSetupHandler
 
         $newSettings->setEnabled($oldSettings->isEnabled());
         $newSettings->setSecret($oldSettings->getSecret());
-    }
-
-    private function verifyOneTimePassword(string $secret, string $oneTimePassword): bool
-    {
-        $totp = GeneralUtility::makeInstance(
-            Totp::class,
-            $secret,
-            'sha1'
-        );
-
-        return $totp->verifyTotp($oneTimePassword);
     }
 }

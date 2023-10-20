@@ -22,10 +22,7 @@ final class DefineIssuerLayerEvent
 
     private string $layer;
 
-    public function __construct(
-        string $table,
-        string $layer
-    )
+    public function __construct(string $table, string $layer)
     {
         $this->table = $table;
         $this->layer = $layer;

@@ -5,13 +5,13 @@
     <section>
         <f:flashMessages/>
 
-        <f:form.validationResults for="someProperty">
+        <f:form.validationResults>
             <f:if condition="{validationResults.flattenedErrors}">
-                <ul class="errors">
-                    <f:for each="{validationResults.errors}" as="error">
-                        <li>{error.code}: {error}</li>
-                    </f:for>
-                </ul>
+                <f:for each="{validationResults.errors}" as="error">
+                    <div class="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+                </f:for>
             </f:if>
         </f:form.validationResults>
 

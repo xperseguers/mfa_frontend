@@ -24,10 +24,7 @@ final class ToggleTotpEvent
 
     private FrontendUser $user;
 
-    public function __construct(
-        ?string $action,
-        FrontendUser $user
-    )
+    public function __construct(?string $action, FrontendUser $user)
     {
         $this->action = $action;
         $this->user = $user;
