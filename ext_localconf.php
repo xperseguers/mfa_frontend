@@ -11,4 +11,8 @@ defined('TYPO3') || die();
         'priority' => 40,
         'class' => \Causal\MfaFrontend\Form\Element\TotpElement::class,
     ];
+
+    // Migrate TOTP setup from EXT:cf_google_authenticator
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['CfGoogleAuthenticatorMigrationWizard']
+        = \Causal\MfaFrontend\Update\CfGoogleAuthenticatorMigrationWizard::class;
 })('mfa_frontend');

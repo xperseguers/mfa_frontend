@@ -15,3 +15,6 @@ services:
 
   Causal\MfaFrontend\Handler\TotpSetupHandler:
     public: true
+
+  Causal\MfaFrontend\Update\CfGoogleAuthenticatorMigrationWizard:
+    public: true
