@@ -1,5 +1,7 @@
 # MFA Frontend
 
+![GitHub license](https://img.shields.io/github/license/xperseguers/mfa_frontend.svg?style=flat-square&label=License)
+
 This extension adds support for MFA (Multi-Factor Authentication) to TYPO3's
 Frontend.
 
@@ -49,7 +51,7 @@ Steps:
 
 At this point, you may safely rename/drop legacy columns as described above.
 
-## Migration from your own domain model tables
+### Migration from your own domain model tables
 
 If you have implemented 2FA using EXT:cf_google_authenticator's signals
 to reuse its business logic, you may do so with this extension as well. You
@@ -62,3 +64,7 @@ Please see `Configuration/TCA/Overrides/fe_users.php` for details (but, again,
 name your custom MFA field `mfa` and not `mfa_frontend`).
 
 Then just use the migration wizard as described above.
+
+## License
+
+[GNU Public License](https://opensource.org/license/gpl-3-0/)

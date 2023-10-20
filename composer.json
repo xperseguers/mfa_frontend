@@ -10,9 +10,9 @@
     "security",
     "protection"
   ],
-  "homepage": "https://github.com/xperseguers/t3ext-mfa-frontend",
+  "homepage": "https://github.com/xperseguers/mfa-frontend",
   "support": {
-    "issues": "https://github.com/xperseguers/t3ext-mfa-frontend/issues"
+    "issues": "https://github.com/xperseguers/mfa-frontend/issues"
   },
   "authors": [
     {
