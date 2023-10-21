@@ -27,6 +27,7 @@ use Causal\MfaFrontend\Validation\Validator\SetupFormValidator;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\RedirectResponse;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
@@ -52,6 +53,8 @@ class SetupController extends ActionController
 
     protected Context $context;
 
+    protected string $typo3Branch;
+
     protected ?TotpSecret $totpSecret = null;
 
     public function __construct(
@@ -65,9 +68,10 @@ class SetupController extends ActionController
         $this->setupFormValidator = $setupFormValidator;
         $this->secretFactory = $secretFactory;
         $this->context = $context;
+        $this->typo3Branch = (new Typo3Version())->getBranch();
     }
 
-    public function indexAction(): ResponseInterface
+    public function indexAction()
     {
         if ($this->isUserLoggedIn()) {
             $totpSecret = $this->getTotpSecret();
@@ -84,6 +88,9 @@ class SetupController extends ActionController
             );
         }
 
+        if (version_compare($this->typo3Branch, '11.5', '<')) {
+            return;
+        }
         return $this->htmlResponse($this->view->render());
     }
 
@@ -192,6 +199,10 @@ class SetupController extends ActionController
 
     protected function getFrontendUser(): array
     {
+        if (version_compare($this->typo3Branch, '11.5', '<')) {
+            return $GLOBALS['TSFE']->fe_user->user;
+        }
+
         return $this->request->getAttribute('frontend.user')->user;
     }
 

@@ -16,8 +16,8 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Validation\Validator;
 
-use Causal\MfaFrontend\Domain\Form\SetupForm;
-use Causal\MfaFrontend\Traits\VerifyOtpTrait;
+use Causal\MfaFrontend\Validation\Validator\Traits\SetupFormValidatorPhp74Trait;
+use Causal\MfaFrontend\Validation\Validator\Traits\SetupFormValidatorPhp8Trait;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
@@ -30,35 +30,16 @@ if (version_compare($typo3Version->getBranch(), '12.0', '>=')) {
     class ParentValidatorClass extends GenericObjectValidator {}
 }
 
-class SetupFormValidator extends ParentValidatorClass
-{
-    use VerifyOtpTrait;
-
-    public function canValidate(mixed $object): bool
+if (\PHP_VERSION_ID < 80000) {
+    // TYPO3 v10 or v11 with PHP 7.4
+    class SetupFormValidator extends ParentValidatorClass
     {
-        parent::canValidate($object);
-
-        return $object instanceof SetupForm;
+        use SetupFormValidatorPhp74Trait;
     }
-
-    protected function isValid(mixed $object): void
+} else {
+    // TYPO3 v11 or v12 with PHP 8+
+    class SetupFormValidator extends ParentValidatorClass
     {
-        parent::isValid($object);
-
-        /** @var SetupForm $object */
-        $secret = $object->getSecret();
-        $oneTimePassword = $object->getOneTimePassword();
-
-        $isValid = $this->verifyOneTimePassword($secret, $oneTimePassword);
-
-        if ($isValid !== true) {
-            $this->addError(
-                $this->translateErrorMessage(
-                    'validator.otp.notvalid',
-                    'mfa_frontend'
-                ),
-                1697810072
-            );
-        }
+        use SetupFormValidatorPhp8Trait;
     }
 }
