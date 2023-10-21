@@ -163,18 +163,30 @@ class SetupController extends ActionController
             return new RedirectResponse('index');
         }
 
-        /** @var ExtbaseRequestParameters $extbaseRequestParameters */
-        $extbaseRequestParameters = clone $this->request->getAttribute('extbase');
-        $originalResult = $extbaseRequestParameters->getOriginalRequestMappingResults();
+        if (version_compare($this->typo3Branch, '11.5', '>=')) {
+            /** @var ExtbaseRequestParameters $extbaseRequestParameters */
+            $extbaseRequestParameters = clone $this->request->getAttribute('extbase');
+            $originalResult = $extbaseRequestParameters->getOriginalRequestMappingResults();
 
-        $formObject = $this->getFormObject();
-        $results = $this->setupFormValidator->validate($formObject);
+            $formObject = $this->getFormObject();
+            $results = $this->setupFormValidator->validate($formObject);
+            $results->merge($originalResult);
 
-        $results->merge($originalResult);
+            if ($results->hasErrors()) {
+                return (new ForwardResponse('index'))
+                    ->withArgumentsValidationResult($results);
+            }
+        } else {
+            // TYPO3 v10
+            $formObject = $this->getFormObject();
+            $results = $this->setupFormValidator->validate($formObject);
 
-        if ($results->hasErrors()) {
-            return (new ForwardResponse('index'))
-                ->withArgumentsValidationResult($results);
+            $this->request->setOriginalRequest(clone $this->request);
+            $this->request->setOriginalRequestMappingResults($results);
+
+            if ($results->hasErrors()) {
+                $this->forward('index');
+            }
         }
 
         return null;
