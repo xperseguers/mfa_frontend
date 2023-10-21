@@ -36,7 +36,7 @@ migration wizard will migrate configuration to the native configuration format
 for TYPO3.
 
 Unfortunately TYPO3 does not correctly support MFA for Frontend users yet
-(there is a bug described on [Forge](https://forge.typo3.org/issues/102081), so
+(there is a bug described on [Forge](https://forge.typo3.org/issues/102081)), so
 the migration from former extension EXT:cf_google_authenticator is done in a
 custom `mfa_frontend` field for Frontend users.
 
