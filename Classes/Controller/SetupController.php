@@ -22,7 +22,7 @@ use Causal\MfaFrontend\Domain\Model\FrontendUser;
 use Causal\MfaFrontend\Domain\Repository\FrontendUserRepository;
 use Causal\MfaFrontend\Domain\SecretFactory;
 use Causal\MfaFrontend\Event\ToggleTotpEvent;
-use Causal\MfaFrontend\Trait\IssuerTrait;
+use Causal\MfaFrontend\Traits\IssuerTrait;
 use Causal\MfaFrontend\Validation\Validator\SetupFormValidator;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;

@@ -18,8 +18,7 @@ namespace Causal\MfaFrontend\Form\Element;
 
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
 use Causal\MfaFrontend\Domain\SecretFactory;
-use Causal\MfaFrontend\Event\DefineIssuerLayerEvent;
-use Causal\MfaFrontend\Trait\IssuerTrait;
+use Causal\MfaFrontend\Traits\IssuerTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;

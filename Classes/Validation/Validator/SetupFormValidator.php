@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace Causal\MfaFrontend\Validation\Validator;
 
 use Causal\MfaFrontend\Domain\Form\SetupForm;
-use Causal\MfaFrontend\Trait\VerifyOtpTrait;
+use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;

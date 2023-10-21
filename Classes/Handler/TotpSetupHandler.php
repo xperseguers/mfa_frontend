@@ -19,7 +19,7 @@ namespace Causal\MfaFrontend\Handler;
 use Causal\MfaFrontend\Domain\Model\Dto\PreprocessFieldArrayDto;
 use Causal\MfaFrontend\Domain\Model\Dto\TotpSettingsDto;
 use Causal\MfaFrontend\Domain\Model\TotpSettings;
-use Causal\MfaFrontend\Trait\VerifyOtpTrait;
+use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 

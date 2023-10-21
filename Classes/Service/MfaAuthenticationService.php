@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Service;
 
-use Causal\MfaFrontend\Trait\VerifyOtpTrait;
+use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use TYPO3\CMS\Core\Authentication\AuthenticationService;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
