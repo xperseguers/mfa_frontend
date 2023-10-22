@@ -14,9 +14,10 @@
     "security",
     "protection"
   ],
-  "homepage": "https://github.com/xperseguers/mfa-frontend",
   "support": {
-    "issues": "https://github.com/xperseguers/mfa-frontend/issues"
+    "docs": "https://docs.typo3.org/p/causal/mfa-frontend/main/en-us/",
+    "issues": "https://github.com/xperseguers/mfa-frontend/issues",
+    "source": "https://github.com/xperseguers/mfa-frontend"
   },
   "authors": [
     {
