@@ -44,6 +44,7 @@ class TotpEditRow
     public function addData(array $result)
     {
         $event = new CollectAllowedTablesEvent([
+            'be_users',
             'fe_users',
         ]);
         $this->eventDispatcher->dispatch($event);

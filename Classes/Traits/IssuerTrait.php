@@ -40,7 +40,7 @@ trait IssuerTrait
     {
         $event = new DefineIssuerLayerEvent(
             $table,
-            $table === 'fe_users' ? 'Frontend' : ''
+            $table === 'fe_users' ? 'Frontend' : 'Backend'
         );
         $this->eventDispatcher->dispatch($event);
 

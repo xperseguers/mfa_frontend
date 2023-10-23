@@ -53,6 +53,7 @@ class DataHandler
     ): void
     {
         $event = new CollectAllowedTablesEvent([
+            'be_users',
             'fe_users',
         ]);
         $this->eventDispatcher->dispatch($event);

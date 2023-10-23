@@ -2,15 +2,27 @@
 defined('TYPO3') || die();
 
 (static function (string $_EXTKEY) {
+    $typo3Version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
+
     // Service configuration
+    $subtype = 'authUserFE';
+    $description = 'Enable Google 2FA for Frontend login';
+    if (version_compare($typo3Version->getBranch(), '10.4', '=')) {
+        $subtype = 'authUserFE,authUserBE';
+        $description = 'Enable Google 2FA for Frontend and Backend login';
+
+        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders'][1433416747]['provider']
+            = \Causal\MfaFrontend\Backend\LoginProvider\TotpLoginProvider::class;
+    }
+
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService(
         $_EXTKEY,
         'auth',
         \Causal\MfaFrontend\Service\MfaAuthenticationService::class,
         [
             'title' => 'Google Authenticator',
-            'description' => 'Enable Google 2FA for frontend login',
-            'subtype' => 'authUserFE',
+            'description' => $description,
+            'subtype' => $subtype,
             'available' => true,
             'priority' => 80,
             'quality' => 80,
@@ -45,7 +57,6 @@ defined('TYPO3') || die();
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['CfGoogleAuthenticatorMigrationWizard']
         = \Causal\MfaFrontend\Update\CfGoogleAuthenticatorMigrationWizard::class;
 
-    $typo3Version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
     if (version_compare($typo3Version->getBranch(), '10.4', '=')) {
         if (!class_exists('Base32\\Base32')) {
             include_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Private/CompatibilityV10/Base32.php';
