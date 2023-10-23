@@ -39,7 +39,7 @@ class MfaAuthenticationService extends AuthenticationService
         }
 
         $secret = $mfa['totp']['secret'] ?? '';
-        $otp = GeneralUtility::_GP('mfa-frontend-otp');
+        $otp = GeneralUtility::_GP('mfa-frontend-otp') ?? '';
 
         if ($this->verifyOneTimePassword($secret, $otp)) {
             // Store last usage of TOTP
