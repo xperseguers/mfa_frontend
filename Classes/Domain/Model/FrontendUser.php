@@ -45,6 +45,15 @@ class FrontendUser extends AbstractEntity
         return $this;
     }
 
+    /**
+     * @return string
+     * @api Useful for 3rd-party extensions in need to keep that in sync with their own domain model
+     */
+    public function getRawMfa(): string
+    {
+        return $this->mfaFrontend;
+    }
+
     public function enableOneTimePassword(string $secret): self
     {
         $mfa = $this->getMfa();
