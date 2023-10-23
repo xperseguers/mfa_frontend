@@ -3,10 +3,13 @@
       data-namespace-typo3-fluid="true">
 
 <div class="mb-2">
-    <mf:qrImage secret="{totpSecret}"
-              alt="{f:translate(key: 'qrcode', extensionName: 'mfa_frontend')}"
-              title="Secret: {totpSecret.secretKey}"
-    />
+    <f:translate key="totp.step1.body" extensionName="mfa_frontend"/>
+    <div>
+        <mf:qrImage secret="{totpSecret}"
+                  alt="{f:translate(key: 'qrcode', extensionName: 'mfa_frontend')}"
+                  title="Secret: {totpSecret.secretKey}"
+        />
+    </div>
 </div>
 
 </html>

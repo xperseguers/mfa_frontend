@@ -38,8 +38,8 @@ class TotpSettings
     public static function createFromVirtualData(array $data): self
     {
         return (new self())
-            ->setEnabled((bool)$data['tx_mfafrontend_enable'])
-            ->setSecret((string)$data['tx_mfafrontend_secret']);
+            ->setEnabled((bool)($data['tx_mfafrontend_enable'] ?? false))
+            ->setSecret((string)($data['tx_mfafrontend_secret'] ?? ''));
     }
 
     public function getMfa(): array

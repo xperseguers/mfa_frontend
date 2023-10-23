@@ -10,7 +10,7 @@
                 <source>Enable Time-based One Time Password (TOTP)</source>
             </trans-unit>
             <trans-unit id="fe_users.tx_mfafrontend_secret">
-                <source>TOTP secret</source>
+                <source>TOTP configuration</source>
             </trans-unit>
 
             <trans-unit id="plugin.setup">

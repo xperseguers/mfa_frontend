@@ -13,13 +13,10 @@
             <f:render
                 partial="Backend/Form/OneTimePassword"
                 arguments="{
+                    isEnabled: 1,
                     prefix: prefix
                 }"
             />
-
-            <div class="text-muted">
-                <f:translate key="backend.disableAuthenticator" extensionName="mfa_frontend"/>
-            </div>
         </f:then>
         <f:else>
             <f:render partial="Backend/Form/QrCode" arguments="{totpSecret: totpSecret}"/>

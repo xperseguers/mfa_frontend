@@ -38,6 +38,7 @@ class TotpElement extends AbstractFormElement
     public function __construct(NodeFactory $nodeFactory, array $data)
     {
         parent::__construct($nodeFactory, $data);
+
         // Unfortunately DI cannot be used here, as the form element is instantiated
         // by the Core and "array" is not a valid type hint for the constructor
         $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
