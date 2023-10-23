@@ -1,8 +1,8 @@
 .. include:: ../Includes.rst.txt
 .. _links:
 
-Links
------
+Contribution and Links
+======================
 
 :TER:
    https://extensions.typo3.org/extension/mfa_frontend
@@ -26,7 +26,7 @@ Links
 .. _links-how-to-contribute:
 
 How to contribute
-^^^^^^^^^^^^^^^^^
+-----------------
 
 This extension is using the same contribution workflow as for TYPO3 Core, but
 with GitHub PRs for the review process. Please read more about the workflow in
@@ -37,7 +37,7 @@ the
 .. _links-how-to-contribute-rules:
 
 Contribution rules
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 - There must be a ticket in the project's bug tracker explaining the problem /
   the suggested enhancement
