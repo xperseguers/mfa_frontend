@@ -14,18 +14,18 @@ MFA Frontend
 :Version:
    |release|
 
- :Language:
+:Language:
    en
 
- :Author:
+:Author:
    Xavier Perseguers
 
- :License:
+:License:
    This document is published under the
    `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
    license.
 
- :Rendered:
+:Rendered:
    |today|
 
 ----
