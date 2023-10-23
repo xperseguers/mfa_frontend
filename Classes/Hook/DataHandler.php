@@ -61,26 +61,6 @@ class DataHandler
             return;
         }
 
-        $otpFromFieldArray = &$incomingFieldArray['tx_mfafrontend_otp'];
-        /*
-        // TODO: Are next lines really needed?
-        $otpFromPostData = $_POST['data'][$table]['tx_mfafrontend_otp'] ?? null;
-
-        if ($otpFromFieldArray === null && $otpFromPostData !== null) {
-            $otpFromFieldArray = $otpFromPostData;
-        }
-        */
-
-        $secretFromFieldArray = &$incomingFieldArray['tx_mfafrontend_secret'];
-        /*
-        // TODO: Are next lines really needed?
-        $secretFromPostData = $_POST['data'][$table]['tx_mfafrontend_secret'] ?? null;
-
-        if ($secretFromFieldArray === null && $secretFromPostData !== null) {
-            $secretFromFieldArray = $secretFromPostData;
-        }
-        */
-
         $preprocessFieldArrayDto = $this->getPreprocessFieldArrayDto(
             $incomingFieldArray,
             $table,
