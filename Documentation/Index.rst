@@ -5,38 +5,36 @@
 MFA Frontend
 ============
 
-.. only:: html
+:Extension key:
+   mfa_frontend
 
-   :Extension key:
-      mfa_frontend
+:Package name:
+   causal/mfa-frontend
 
-   :Package name:
-      causal/mfa-frontend
+:Version:
+   |release|
 
-   :Version:
-      |release|
+ :Language:
+   en
 
-    :Language:
-      en
+ :Author:
+   Xavier Perseguers
 
-    :Author:
-      Xavier Perseguers
+ :License:
+   This document is published under the
+   `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
+   license.
 
-    :License:
-      This document is published under the
-      `Creative Commons BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__
-      license.
+ :Rendered:
+   |today|
 
-    :Rendered:
-      |today|
+----
 
-   ----
+Enable MFA (Multi-Factor Authentication) for Frontend accounts.
 
-   Enable MFA (Multi-Factor Authentication) for Frontend accounts.
+----
 
-   ----
-
-   **Table of Contents:**
+**Table of Contents:**
 
 .. toctree::
 	:maxdepth: 3
@@ -44,6 +42,7 @@ MFA Frontend
 
    Introduction/Index
    Installation/Index
+   KnownProblems/Index
 
 .. Meta Menu
 

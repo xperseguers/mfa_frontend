@@ -21,7 +21,7 @@ themselves.
 .. note::
 
    This extension has been initially inspired by
-   [[codeFareith] Google Authenticator](https://extensions.typo3.org/extension/cf_google_authenticator)
+   `[codeFareith] Google Authenticator <https://extensions.typo3.org/extension/cf_google_authenticator>`__
    but it has been rewritten and extended as that former extension was not
    actively maintained anymore. Thanks to the original author
    Robin "codeFareith" von den Bergen for the inspiration!

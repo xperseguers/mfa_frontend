@@ -36,7 +36,7 @@ custom ``mfa_frontend`` field for Frontend users.
 
    If TYPO3 suggests it, be sure NOT to rename or drop legacy columns
    ``tx_cfgoogleauthenticator_enabled`` and ``tx_cfgoogleauthenticator_secret``
-   for tables ``be_users`` and ``fe_users`` (yet)
+   for tables ``be_users`` and ``fe_users`` (yet).
 
 1. Switch to the module "Upgrade" within "Admin Tools"
 2. Click the button "Upgrade Wizard"
@@ -52,9 +52,9 @@ custom ``mfa_frontend`` field for Frontend users.
 Migration from your own domain model tables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have implemented 2FA using EXT:cf_google_authenticator's signals
-to reuse its business logic, you may do so with this extension as well (using
-PSR-14 events naturally).
+If you have implemented Two-factor authentication (2FA) using
+EXT:cf_google_authenticator's signals to reuse its business logic, you may do so
+with this extension as well (using PSR-14 events naturally).
 
 You will need to adapt your TCA to use a new field ``mfa`` that shall replace
 the two former fields ``tx_cfgoogleauthenticator_enabled`` and
@@ -65,7 +65,7 @@ configuration to be reused in your domain model.
 
 .. warning::
 
-   You **must** name your custom MFA field `mfa` and not `mfa_frontend` as we do
-   for Frontend users records.
+   You **must** name the MFA field `mfa` in your domain model; and not
+   `mfa_frontend` as we do for Frontend users records.
 
 Then just use the migration wizard as described above.
