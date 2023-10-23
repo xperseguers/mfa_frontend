@@ -77,7 +77,7 @@ class TotpSettings
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(string $table): array
     {
         $mfa = $this->getMfa();
 
@@ -102,8 +102,9 @@ class TotpSettings
             'lastUsed' => 0,
         ];
 
+        $mfaField = $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
         return [
-            'mfa_frontend' => json_encode($mfa),
+            $mfaField => json_encode($mfa),
         ];
     }
 }

@@ -54,7 +54,7 @@ class TotpSetupHandler
 
         $result = $this->totpSettingsDto
             ->getNewSettings()
-            ->toArray();
+            ->toArray($preprocessFieldArrayDto->getTable());
 
         return $result;
     }
