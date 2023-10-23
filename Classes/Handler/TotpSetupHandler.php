@@ -74,7 +74,7 @@ class TotpSetupHandler
             );
             if ($record !== null) {
                 $this->totpSettingsDto->setOldSettings(
-                    TotpSettings::createFromRecord($record)
+                    TotpSettings::createFromRecord($record, $this->preprocessFieldArrayDto->getTable())
                 );
                 $newSettings->setMfa(
                     $this->totpSettingsDto->getOldSettings()->getMfa()

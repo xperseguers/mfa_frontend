@@ -24,9 +24,10 @@ class TotpSettings
 
     protected string $secret = '';
 
-    public static function createFromRecord(array $record): self
+    public static function createFromRecord(array $record, string $table): self
     {
-        $mfa = json_decode($record['mfa_frontend'] ?? '', true) ?? [];
+        $mfaField = $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
+        $mfa = json_decode($record[$mfaField] ?? '', true) ?? [];
 
         return (new self())
             ->setMfa($mfa)
