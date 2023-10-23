@@ -48,7 +48,8 @@ class TotpEditRow
         if (in_array($result['tableName'], $event->getTables(), true)) {
             $row = $result['databaseRow'];
 
-            $mfa = json_decode($row['mfa_frontend'] ?? '', true) ?? [];
+            $mfaField = $result['tableName'] === 'fe_users' ? 'mfa_frontend' : 'mfa';
+            $mfa = json_decode($row[$mfaField] ?? '', true) ?? [];
 
             $row['tx_mfafrontend_enable'] = ($mfa['totp']['active'] ?? false) ? 1 : 0;
             $row['tx_mfafrontend_secret'] = $mfa['totp']['secret'] ?? '';
