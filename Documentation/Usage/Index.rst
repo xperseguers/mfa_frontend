@@ -5,8 +5,8 @@ Usage
 =====
 
 When you edit a Frontend User (``fe_users``), you will see a new tab called
-"Multi-Factor Authentication". There you can enable MFA for the user by toggling
-the switch and following the instructions:
+"Multi-Factor Authentication". There, you can enable MFA for the user by
+toggling the switch and following the instructions:
 
 .. image:: ../Introduction/Images/mfa-tca.png
    :alt: Configuration of the MFA settings for a Frontend user

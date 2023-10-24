@@ -35,6 +35,9 @@
 <f:section name="disable-form">
     <div class="body p-3">
         <f:form.hidden id="field_tx_mfafrontend_secret" property="secret"/>
+        <p>
+            <f:translate key="disable2FA" extensionName="mfa_frontend"/>
+        </p>
         <f:render partial="Form/OneTimePassword" arguments="{_all}"/>
     </div>
 

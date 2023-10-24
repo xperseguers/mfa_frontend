@@ -3,6 +3,12 @@
       data-namespace-typo3-fluid="true">
 
 <div class="mb-2">
+    <p>
+        <strong>
+            <span class="badge badge-primary"><f:translate key="totp.step1" extensionName="mfa_frontend"/></span>
+            <f:translate key="totp.step1.title" extensionName="mfa_frontend"/>
+        </strong>
+    </p>
     <f:translate key="totp.step1.body" extensionName="mfa_frontend"/>
     <div>
         <mf:qrImage secret="{totpSecret}"
