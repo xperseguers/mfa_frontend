@@ -6,13 +6,11 @@ CollectAllowedTablesEvent
 
 This event is triggered when the extension collects the allowed tables to react
 on. This is typically the case when it hooks into
-``TYPO3\CMS\Core\DataHandling\DataHandler`` to check whether MFA (current TOTP)
-may be enabled or disabled after editing a record and trying to save it.
+``TYPO3\CMS\Core\DataHandling\DataHandler`` to check whether MFA (currently
+TOTP) may be enabled or disabled after editing a record and trying to save it.
 
 If you want to use MFA for your own extension, you can listen to this event and
-add your own table(s) to the list of allowed tables.
-
-The list of allowed tables defaults to ``fe_users``.
+add your own table(s) to the list of allowed tables (by default ``fe_users``).
 
 
 .. _development-psr14-collectallowedtablesevent-register:
