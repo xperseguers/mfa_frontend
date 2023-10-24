@@ -63,7 +63,11 @@ Insert the Plugin
 3. Choose "General Plugin" from the list of content elements (usually on the tab
    "Plugins").
 4. Switch to the tab "Plugin" and choose "Two-Factor Authentication (2FA) Setup"
-   from the list of plugins.
+   from the list of plugins:
+
+   .. image:: Images/insert-plugin.png
+      :alt: Choosing the plugin to insert
+
 5. Add access restrictions (typically to logged-in users only) to the plugin or
    the page itself if necessary.
 
