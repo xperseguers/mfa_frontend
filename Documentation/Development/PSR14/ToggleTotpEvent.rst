@@ -4,8 +4,8 @@
 ToggleTotpEvent
 ===============
 
-This event when some users uses the plugin
-"Two-Factor Authentication (2FA) Setup" to enable or disable use of 2FA for
+This event is triggered when some users uses the plugin
+"Two-Factor Authentication (2FA) Setup" to enable or disable the use of 2FA for
 their account.
 
 Listening to this event allows you e.g., to synchronize the MFA status with some

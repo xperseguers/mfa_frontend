@@ -4,8 +4,8 @@
 DefineIssuerLayerEvent
 ======================
 
-This event lets you configure/override the issuer layer is defined. You could
-use it to show your extension's name when you use MFA for your own domain model.
+This event lets you configure/override the issuer layer. You could use it to
+show your extension's name when you use MFA for your own domain model.
 
 
 .. _development-psr14-defineissuerlayerevent-register:
