@@ -14,8 +14,8 @@ PSR-14 Events
 -------------
 
 .. toctree::
-	:maxdepth: 1
+   :maxdepth: 1
 
-	PSR14/CollectAllowedTablesEvent
-	PSR14/DefineIssuerLayerEvent
-	PSR14/ToggleTotpEvent
+   PSR14/CollectAllowedTablesEvent
+   PSR14/DefineIssuerLayerEvent
+   PSR14/ToggleTotpEvent

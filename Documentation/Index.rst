@@ -37,8 +37,8 @@ Enable MFA (Multi-Factor Authentication) for Frontend accounts.
 **Table of Contents:**
 
 .. toctree::
-	:maxdepth: 3
-	:titlesonly:
+   :maxdepth: 3
+   :titlesonly:
 
    Introduction/Index
    Installation/Index
