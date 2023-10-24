@@ -20,6 +20,12 @@ together with toggling off the switch to disable MFA again.
 Plugin "Two-Factor Authentication (2FA) Setup"
 ----------------------------------------------
 
+
+.. _usage-plugin-setup-typoscript:
+
+TypoScript Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 Please start by editing your Template record to include the TypoScript template
 provided by this extension.
 
@@ -46,3 +52,22 @@ You can do so like that:
 
    or ensure that your own template has a higher index definition than "11".
 
+
+.. _usage-plugin-setup-ce:
+
+Insert the Plugin
+^^^^^^^^^^^^^^^^^
+
+1. Open the page where you want to insert the plugin.
+2. Click the button to add a content to your page.
+3. Choose "General Plugin" from the list of content elements (usually on the tab
+   "Plugins").
+4. Switch to the tab "Plugin" and choose "Two-Factor Authentication (2FA) Setup"
+   from the list of plugins.
+5. Add access restrictions (typically to logged-in users only) to the plugin or
+   the page itself if necessary.
+
+Now visit that page in the Frontend and you should see the plugin:
+
+   .. image:: Images/plugin-setup.png
+      :alt: Configuration plugin for an logged-in user
