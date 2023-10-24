@@ -42,6 +42,7 @@ Enable MFA (Multi-Factor Authentication) for Frontend accounts.
 
    Introduction/Index
    Installation/Index
+   Usage/Index
    Development/Index
    Links
 
