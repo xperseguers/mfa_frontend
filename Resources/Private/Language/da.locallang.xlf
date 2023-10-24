@@ -17,39 +17,39 @@
       </trans-unit>
       <trans-unit id="totp.step1">
         <source>Step 1</source>
-        <target state="needs-translation">Step 1</target>
+        <target state="translated">Trin 1</target>
       </trans-unit>
       <trans-unit id="totp.step2">
         <source>Step 2</source>
-        <target state="needs-translation">Step 2</target>
+        <target state="translated">Trin 2</target>
       </trans-unit>
       <trans-unit id="totp.step3">
         <source>Step 3</source>
-        <target state="needs-translation">Step 3</target>
+        <target state="translated">Trin 3</target>
       </trans-unit>
       <trans-unit id="totp.step1.title">
         <source>Scan the displayed QR code</source>
-        <target state="needs-translation">Scan the displayed QR code</target>
+        <target state="translated">Skan den viste QR-kode</target>
       </trans-unit>
       <trans-unit id="totp.step1.body">
         <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
-        <target state="needs-translation">Scan this code with your OTP application (e.g., Google Authenticator).</target>
+        <target state="translated">Scan denne kode med din OTP-applikation (f.eks. Google Authenticator).</target>
       </trans-unit>
       <trans-unit id="totp.step2.title">
         <source>Copy the shared secret</source>
-        <target state="needs-translation">Copy the shared secret</target>
+        <target state="translated">Kopier den delte secret</target>
       </trans-unit>
       <trans-unit id="totp.step2.body">
         <source>You can also enter the shared secret manually in your OTP application or device.</source>
-        <target state="needs-translation">You can also enter the shared secret manually in your OTP application or device.</target>
+        <target state="translated">Du kan også indtaste den delte secret manuelt i din OTP-enhed eller applikation.</target>
       </trans-unit>
       <trans-unit id="totp.step3.title">
         <source>Enter the generated six-digit code</source>
-        <target state="needs-translation">Enter the generated six-digit code</target>
+        <target state="translated">Indtast den genererede sekscifrede kode</target>
       </trans-unit>
       <trans-unit id="totp.step3.body">
         <source>This code should now be displayed on your device or in your application.</source>
-        <target state="needs-translation">This code should now be displayed on your device or in your application.</target>
+        <target state="translated">Denne kode skal nu vises på din enhed eller i din applikation.</target>
       </trans-unit>
       <trans-unit id="disable2FA" approved="yes">
         <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
