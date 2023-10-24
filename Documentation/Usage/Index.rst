@@ -13,3 +13,4 @@ point of view.
 
    Backend
    Frontend
+   Applications

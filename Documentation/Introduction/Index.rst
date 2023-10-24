@@ -32,7 +32,7 @@ themselves.
 Screenshots
 -----------
 
-.. figure:: Images/mfa-tca.png
+.. figure:: ../Usage/Images/plugin-setup.png
    :alt: Configuration of the MFA settings for a Frontend user
 
    Configuration of the MFA settings for a Frontend user
