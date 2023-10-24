@@ -73,5 +73,5 @@ Insert the Plugin
 
 Now visit that page in the Frontend and you should see the plugin:
 
-   .. image:: Images/plugin-setup.png
-      :alt: Configuration plugin for an logged-in user
+.. image:: Images/plugin-setup.png
+   :alt: Configuration plugin for an logged-in user
