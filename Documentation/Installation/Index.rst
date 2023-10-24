@@ -54,14 +54,16 @@ Migration from your own domain model tables
 
 If you have implemented Two-factor authentication (2FA) using
 EXT:cf_google_authenticator's signals to reuse its business logic, you may do so
-with this extension as well (using PSR-14 events naturally).
+with this extension as well (using :ref:`PSR-14 events <>` naturally).
 
-You will need to adapt your TCA to use a new field ``mfa`` that shall replace
-the two former fields ``tx_cfgoogleauthenticator_enabled`` and
-``tx_cfgoogleauthenticator_secret`` in your domain model.
+1. Listen to the PSR-14 event :ref:`development-psr14-collectallowedtablesevent`
+   and add your own table to the list of allowed tables for MFA.
+2. Adapt your TCA to use a new field ``mfa`` that shall replace the two former
+   fields ``tx_cfgoogleauthenticator_enabled`` and
+   ``tx_cfgoogleauthenticator_secret`` in your domain model.
 
-Please see :file:`Configuration/TCA/Overrides/fe_users.php` for the actual
-configuration to be reused in your domain model.
+   Please see :ref:`development-psr14-collectallowedtablesevent-tca` for full
+   instructions.
 
 .. warning::
 
