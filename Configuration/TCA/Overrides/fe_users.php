@@ -24,7 +24,7 @@ $tempColumns = [
             'renderType' => 'MfaFrontendTotp',
         ],
     ],
-    'mfa_frontend' => [
+    'mfa' => [
         'config' => [
             'type' => 'passthrough',
         ],

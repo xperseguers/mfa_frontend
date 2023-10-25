@@ -20,6 +20,6 @@ trait MfaFieldTrait
 {
     protected static function getMfaField(string $table): string
     {
-        return $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
+        return 'mfa';
     }
 }

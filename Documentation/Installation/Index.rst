@@ -25,11 +25,6 @@ Since TYPO3 v11, MFA is natively supported for Backend users, thus the
 migration wizard will migrate configuration to the native configuration format
 for TYPO3.
 
-Unfortunately TYPO3 does not correctly support MFA for Frontend users yet
-(there is a bug described on `Forge <https://forge.typo3.org/issues/102081>`__),
-so the migration from former extension EXT:cf_google_authenticator is done in a
-custom ``mfa_frontend`` field for Frontend users.
-
 **Steps:**
 
 .. warning::
@@ -67,7 +62,6 @@ with this extension as well (using :ref:`PSR-14 events <>` naturally).
 
 .. warning::
 
-   You **must** name the MFA field `mfa` in your domain model; and not
-   `mfa_frontend` as we do for Frontend users records.
+   You **must** name the MFA field `mfa` in your domain model.
 
 Then just use the migration wizard as described above.
