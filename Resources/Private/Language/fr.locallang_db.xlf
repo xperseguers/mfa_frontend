@@ -3,21 +3,21 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="fr">
     <header/>
     <body>
-      <trans-unit id="mfa_auth">
+      <trans-unit id="mfa_auth" approved="yes">
         <source>Multi-Factor Authentication</source>
-        <target state="translated">Authentification multi-facteurs</target>
+        <target state="final">Authentification multi-facteurs</target>
       </trans-unit>
-      <trans-unit id="fe_users.tx_mfafrontend_enable">
+      <trans-unit id="fe_users.tx_mfafrontend_enable" approved="yes">
         <source>Enable Time-based One Time Password (TOTP)</source>
-        <target state="translated">Activer le mot de passe à usage unique basé sur le temps (TOTP)</target>
+        <target state="final">Activer le mot de passe à usage unique basé sur le temps (TOTP)</target>
       </trans-unit>
-      <trans-unit id="fe_users.tx_mfafrontend_secret">
+      <trans-unit id="fe_users.tx_mfafrontend_secret" approved="yes">
         <source>TOTP configuration</source>
-        <target state="translated">Configuration TOTP</target>
+        <target state="final">Configuration TOTP</target>
       </trans-unit>
-      <trans-unit id="plugin.setup">
+      <trans-unit id="plugin.setup" approved="yes">
         <source>Two-Factor Authentication (2FA) Setup</source>
-        <target state="translated">Configuration de l'authentification à deux facteurs (2FA)</target>
+        <target state="final">Configuration de l'authentification à deux facteurs (2FA)</target>
       </trans-unit>
     </body>
   </file>
