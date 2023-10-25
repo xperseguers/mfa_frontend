@@ -15,41 +15,41 @@
         <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
         <target state="final">For at deaktivere to-faktor autentificering, skal du slå switchen ovenfor fra og indtaste en gyldig engangskode.</target>
       </trans-unit>
-      <trans-unit id="totp.step1">
+      <trans-unit id="totp.step1" approved="yes">
         <source>Step 1</source>
-        <target state="translated">Trin 1</target>
+        <target state="final">Trin 1</target>
       </trans-unit>
-      <trans-unit id="totp.step2">
+      <trans-unit id="totp.step2" approved="yes">
         <source>Step 2</source>
-        <target state="translated">Trin 2</target>
+        <target state="final">Trin 2</target>
       </trans-unit>
-      <trans-unit id="totp.step3">
+      <trans-unit id="totp.step3" approved="yes">
         <source>Step 3</source>
-        <target state="translated">Trin 3</target>
+        <target state="final">Trin 3</target>
       </trans-unit>
-      <trans-unit id="totp.step1.title">
+      <trans-unit id="totp.step1.title" approved="yes">
         <source>Scan the displayed QR code</source>
-        <target state="translated">Skan den viste QR-kode</target>
+        <target state="final">Skan den viste QR-kode</target>
       </trans-unit>
-      <trans-unit id="totp.step1.body">
+      <trans-unit id="totp.step1.body" approved="yes">
         <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
-        <target state="translated">Scan denne kode med din OTP-applikation (f.eks. Google Authenticator).</target>
+        <target state="final">Scan denne kode med din OTP-applikation (f.eks. Google Authenticator).</target>
       </trans-unit>
-      <trans-unit id="totp.step2.title">
+      <trans-unit id="totp.step2.title" approved="yes">
         <source>Copy the shared secret</source>
-        <target state="translated">Kopier den delte secret</target>
+        <target state="final">Kopier den delte secret</target>
       </trans-unit>
-      <trans-unit id="totp.step2.body">
+      <trans-unit id="totp.step2.body" approved="yes">
         <source>You can also enter the shared secret manually in your OTP application or device.</source>
-        <target state="translated">Du kan også indtaste den delte secret manuelt i din OTP-enhed eller applikation.</target>
+        <target state="final">Du kan også indtaste den delte secret manuelt i din OTP-enhed eller applikation.</target>
       </trans-unit>
-      <trans-unit id="totp.step3.title">
+      <trans-unit id="totp.step3.title" approved="yes">
         <source>Enter the generated six-digit code</source>
-        <target state="translated">Indtast den genererede sekscifrede kode</target>
+        <target state="final">Indtast den genererede sekscifrede kode</target>
       </trans-unit>
-      <trans-unit id="totp.step3.body">
+      <trans-unit id="totp.step3.body" approved="yes">
         <source>This code should now be displayed on your device or in your application.</source>
-        <target state="translated">Denne kode skal nu vises på din enhed eller i din applikation.</target>
+        <target state="final">Denne kode skal nu vises på din enhed eller i din applikation.</target>
       </trans-unit>
       <trans-unit id="disable2FA" approved="yes">
         <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
