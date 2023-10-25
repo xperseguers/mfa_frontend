@@ -3,21 +3,21 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="no">
     <header/>
     <body>
-      <trans-unit id="mfa_auth">
+      <trans-unit id="mfa_auth" approved="yes">
         <source>Multi-Factor Authentication</source>
-        <target state="needs-translation">Multi-Factor Authentication</target>
+        <target state="final">Flerfaktorautentisering</target>
       </trans-unit>
-      <trans-unit id="fe_users.tx_mfafrontend_enable">
+      <trans-unit id="fe_users.tx_mfafrontend_enable" approved="yes">
         <source>Enable Time-based One Time Password (TOTP)</source>
-        <target state="needs-translation">Enable Time-based One Time Password (TOTP)</target>
+        <target state="final">Aktiver tidsbasert engangspassord (TOTP)</target>
       </trans-unit>
-      <trans-unit id="fe_users.tx_mfafrontend_secret">
+      <trans-unit id="fe_users.tx_mfafrontend_secret" approved="yes">
         <source>TOTP configuration</source>
-        <target state="needs-translation">TOTP configuration</target>
+        <target state="final">TOTP-konfigurasjon</target>
       </trans-unit>
-      <trans-unit id="plugin.setup">
+      <trans-unit id="plugin.setup" approved="yes">
         <source>Two-Factor Authentication (2FA) Setup</source>
-        <target state="needs-translation">Two-Factor Authentication (2FA) Setup</target>
+        <target state="final">Oppsett av tofaktorautentisering (2FA)</target>
       </trans-unit>
     </body>
   </file>
