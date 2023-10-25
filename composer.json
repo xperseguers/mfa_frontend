@@ -17,8 +17,8 @@
   "homepage": "https://extensions.typo3.org/extension/mfa_frontend",
   "support": {
     "docs": "https://docs.typo3.org/p/causal/mfa-frontend/main/en-us/",
-    "issues": "https://github.com/xperseguers/mfa-frontend/issues",
-    "source": "https://github.com/xperseguers/mfa-frontend"
+    "issues": "https://github.com/xperseguers/mfa_frontend/issues",
+    "source": "https://github.com/xperseguers/mfa_frontend"
   },
   "authors": [
     {
