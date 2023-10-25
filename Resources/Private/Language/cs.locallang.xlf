@@ -15,17 +15,17 @@
         <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
         <target state="needs-translation">To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</target>
       </trans-unit>
-      <trans-unit id="totp.step1">
+      <trans-unit id="totp.step1" approved="yes">
         <source>Step 1</source>
-        <target state="needs-translation">Step 1</target>
+        <target state="final">Krok 1</target>
       </trans-unit>
-      <trans-unit id="totp.step2">
+      <trans-unit id="totp.step2" approved="yes">
         <source>Step 2</source>
-        <target state="needs-translation">Step 2</target>
+        <target state="final">Krok 2</target>
       </trans-unit>
-      <trans-unit id="totp.step3">
+      <trans-unit id="totp.step3" approved="yes">
         <source>Step 3</source>
-        <target state="needs-translation">Step 3</target>
+        <target state="final">Krok 3</target>
       </trans-unit>
       <trans-unit id="totp.step1.title">
         <source>Scan the displayed QR code</source>
