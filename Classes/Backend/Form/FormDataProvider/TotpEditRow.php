@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Causal\MfaFrontend\Backend\Form\FormDataProvider;
 
 use Causal\MfaFrontend\Event\CollectAllowedTablesEvent;
+use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\FormDataProvider\AbstractDatabaseRecordProvider;
 use TYPO3\CMS\Backend\Form\FormDataProviderInterface;
@@ -25,6 +26,8 @@ class TotpEditRow
     extends AbstractDatabaseRecordProvider
     implements FormDataProviderInterface
 {
+    use MfaFieldTrait;
+
     protected EventDispatcherInterface $eventDispatcher;
 
     public function __construct(EventDispatcherInterface $eventDispatcher)
@@ -48,7 +51,7 @@ class TotpEditRow
         if (in_array($result['tableName'], $event->getTables(), true)) {
             $row = $result['databaseRow'];
 
-            $mfaField = $result['tableName'] === 'fe_users' ? 'mfa_frontend' : 'mfa';
+            $mfaField = static::getMfaField($result['tableName']);
             $mfa = json_decode($row[$mfaField] ?? '', true) ?? [];
 
             $row['tx_mfafrontend_enable'] = ($mfa['totp']['active'] ?? false) ? 1 : 0;

@@ -16,8 +16,12 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Domain\Model;
 
+use Causal\MfaFrontend\Traits\MfaFieldTrait;
+
 class TotpSettings
 {
+    use MfaFieldTrait;
+
     protected array $mfa = [];
 
     protected bool $enabled = false;
@@ -26,7 +30,7 @@ class TotpSettings
 
     public static function createFromRecord(array $record, string $table): self
     {
-        $mfaField = $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
+        $mfaField = static::getMfaField($table);
         $mfa = json_decode($record[$mfaField] ?? '', true) ?? [];
 
         return (new self())
@@ -80,6 +84,7 @@ class TotpSettings
 
     public function toArray(string $table): array
     {
+        $mfaField = static::getMfaField($table);
         $mfa = $this->getMfa();
 
         if (isset($mfa['totp'])) {
@@ -89,7 +94,7 @@ class TotpSettings
                 && $currentEnabled === $this->isEnabled()) {
                 // Nothing changed
                 return [
-                    'mfa_frontend' => json_encode($mfa),
+                    $mfaField => json_encode($mfa),
                 ];
             }
         }
@@ -103,7 +108,6 @@ class TotpSettings
             'lastUsed' => 0,
         ];
 
-        $mfaField = $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
         return [
             $mfaField => json_encode($mfa),
         ];

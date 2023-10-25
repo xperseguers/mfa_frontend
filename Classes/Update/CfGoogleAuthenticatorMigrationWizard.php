@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Causal\MfaFrontend\Update;
 
 use Causal\MfaFrontend\Event\CollectAllowedTablesEvent;
+use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -25,6 +26,8 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 class CfGoogleAuthenticatorMigrationWizard implements UpgradeWizardInterface
 {
+    use MfaFieldTrait;
+
     protected EventDispatcherInterface $eventDispatcher;
 
     public function __construct(EventDispatcherInterface $eventDispatcher)
@@ -52,7 +55,7 @@ class CfGoogleAuthenticatorMigrationWizard implements UpgradeWizardInterface
     {
         $tables = $this->getTables();
         foreach ($tables as $table) {
-            $targetField = $this->getTargetField($table);
+            $targetField = static::getMfaField($table);
             if (!$this->canMigrateTable($table, $targetField)) {
                 continue;
             }
@@ -84,7 +87,7 @@ class CfGoogleAuthenticatorMigrationWizard implements UpgradeWizardInterface
     {
         $tables = $this->getTables();
         foreach ($tables as $table) {
-            $targetField = $this->getTargetField($table);
+            $targetField = static::getMfaField($table);
             if (!$this->canMigrateTable($table, $targetField)) {
                 continue;
             }
@@ -147,11 +150,6 @@ class CfGoogleAuthenticatorMigrationWizard implements UpgradeWizardInterface
         $this->eventDispatcher->dispatch($event);
 
         return $event->getTables();
-    }
-
-    protected function getTargetField(string $table): string
-    {
-        return $table === 'fe_users' ? 'mfa_frontend' : 'mfa';
     }
 
     protected function canMigrateTable(string $table, string $targetField): bool

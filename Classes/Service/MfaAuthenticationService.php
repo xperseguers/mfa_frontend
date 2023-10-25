@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Service;
 
+use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use TYPO3\CMS\Core\Authentication\AuthenticationService;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -23,6 +24,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class MfaAuthenticationService extends AuthenticationService
 {
+    use MfaFieldTrait;
     use VerifyOtpTrait;
 
     public const FAIL_AND_STOP = 0;
@@ -31,7 +33,8 @@ class MfaAuthenticationService extends AuthenticationService
 
     public function authUser(array $user): int
     {
-        $mfa = json_decode($user['mfa_frontend'] ?? '', true) ?? [];
+        $mfaField = static::getMfaField($this->db_user['table']);
+        $mfa = json_decode($user[$mfaField] ?? '', true) ?? [];
 
         if (!($mfa['totp']['active'] ?? false)) {
             // Not responsible, check other services
@@ -62,7 +65,7 @@ class MfaAuthenticationService extends AuthenticationService
             ->update(
                 $this->db_user['table'],
                 [
-                    'mfa_frontend' => json_encode($mfa),
+                    $mfaField => json_encode($mfa),
                 ],
                 [
                     'uid' => $user['uid'],

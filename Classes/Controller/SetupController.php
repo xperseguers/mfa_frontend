@@ -23,6 +23,7 @@ use Causal\MfaFrontend\Domain\Repository\FrontendUserRepository;
 use Causal\MfaFrontend\Domain\SecretFactory;
 use Causal\MfaFrontend\Event\ToggleTotpEvent;
 use Causal\MfaFrontend\Traits\IssuerTrait;
+use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Causal\MfaFrontend\Validation\Validator\SetupFormValidator;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
@@ -44,6 +45,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class SetupController extends ActionController
 {
     use IssuerTrait;
+    use MfaFieldTrait;
 
     protected FrontendUserRepository $frontendUserRepository;
 
@@ -200,7 +202,8 @@ class SetupController extends ActionController
 
     protected function getUserMfa(): array
     {
-        return json_decode($this->getFrontendUser()['mfa_frontend'] ?? '', true) ?? [];
+        $mfaField = static::getMfaField('fe_users');
+        return json_decode($this->getFrontendUser()[$mfaField] ?? '', true) ?? [];
     }
 
     protected function initializeFrontendUser(): ?FrontendUser
