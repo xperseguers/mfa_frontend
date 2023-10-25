@@ -27,7 +27,7 @@ class SecretFactory
     /**
      * @param int $secretLength Length of the encoded string, as such, it must be divisible by 8
      */
-    public function __construct(int $secretLength = 16)
+    public function __construct(int $secretLength = 32)
     {
         if ($secretLength === 0 || $secretLength % 8 > 0) {
             throw new \InvalidArgumentException(
