@@ -75,9 +75,9 @@
         <source>Disable</source>
         <target state="final">Disattiva</target>
       </trans-unit>
-      <trans-unit id="validator.secret.tampered">
+      <trans-unit id="validator.secret.tampered" approved="yes">
         <source>The generated secret is invalid or has been tampered with.</source>
-        <target state="needs-translation">The generated secret is invalid or has been tampered with.</target>
+        <target state="final">Il segreto generato non è valido o è stato manomesso.</target>
       </trans-unit>
       <trans-unit id="validator.otp.notvalid" approved="yes">
         <source>The given one-time password is invalid or has expired.</source>
