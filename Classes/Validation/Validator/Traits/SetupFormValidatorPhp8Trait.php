@@ -18,6 +18,7 @@ namespace Causal\MfaFrontend\Validation\Validator\Traits;
 
 use Causal\MfaFrontend\Domain\Form\SetupForm;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 trait SetupFormValidatorPhp8Trait
 {
@@ -37,6 +38,18 @@ trait SetupFormValidatorPhp8Trait
         /** @var SetupForm $object */
         $secret = $object->getSecret();
         $oneTimePassword = $object->getOneTimePassword();
+        $checksum = $object->getChecksum();
+
+        if ($secret === '' || !hash_equals(GeneralUtility::hmac($secret, 'totp-setup'), $checksum)) {
+            $this->addError(
+                $this->translateErrorMessage(
+                    'validator.secret.tampered',
+                    'mfa_frontend'
+                ),
+                1698271967
+            );
+            return;
+        }
 
         $isValid = $this->verifyOneTimePassword($secret, $oneTimePassword);
 

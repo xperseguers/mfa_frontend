@@ -32,10 +32,13 @@ class SetupForm
 
     protected string $oneTimePassword;
 
-    public function __construct(string $secret, string $oneTimePassword = '')
+    protected string $checksum;
+
+    public function __construct(string $secret, string $oneTimePassword = '', string $checksum = '')
     {
         $this->setSecret($secret);
         $this->setOneTimePassword($oneTimePassword);
+        $this->setChecksum($checksum);
     }
 
     public function getSecret(): string
@@ -57,6 +60,17 @@ class SetupForm
     public function setOneTimePassword(string $oneTimePassword): self
     {
         $this->oneTimePassword = $oneTimePassword;
+        return $this;
+    }
+
+    public function getChecksum(): string
+    {
+        return $this->checksum;
+    }
+
+    public function setChecksum(string $checksum): self
+    {
+        $this->checksum = $checksum;
         return $this;
     }
 }

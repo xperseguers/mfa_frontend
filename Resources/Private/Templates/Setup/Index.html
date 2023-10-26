@@ -18,6 +18,7 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 30rem;">
                 <f:form method="post" controller="Setup" action="update" object="{formData}" name="{formName}">
+                    <f:form.hidden property="checksum"/>
                     <f:if condition="{isEnabled}">
                         <f:then>
                             <f:render section="disable-form" arguments="{_all}"/>

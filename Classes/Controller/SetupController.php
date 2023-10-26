@@ -223,10 +223,15 @@ class SetupController extends ActionController
 
     protected function getSetupForm(): SetupForm
     {
+        $secret = $this->getTotpSecret()->getSecretKey();
+        // Generate hmac of the secret to prevent it from being changed in the setup form
+        $checksum = GeneralUtility::hmac($secret, 'totp-setup');
+
         return GeneralUtility::makeInstance(
             SetupForm::class,
-            $this->getTotpSecret()->getSecretKey(),
-            ''
+            $secret,
+            '',
+            $checksum
         );
     }
 
@@ -237,7 +242,8 @@ class SetupController extends ActionController
         return GeneralUtility::makeInstance(
             SetupForm::class,
             $formData['secret'],
-            $formData['oneTimePassword']
+            $formData['oneTimePassword'],
+            $formData['checksum']
         );
     }
 
