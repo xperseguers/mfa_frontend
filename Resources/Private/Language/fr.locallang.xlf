@@ -75,6 +75,10 @@
         <source>Disable</source>
         <target state="final">Désactiver</target>
       </trans-unit>
+      <trans-unit id="validator.secret.tampered">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target state="needs-translation">The generated secret is invalid or has been tampered with.</target>
+      </trans-unit>
       <trans-unit id="validator.otp.notvalid" approved="yes">
         <source>The given one-time password is invalid or has expired.</source>
         <target state="final">Le mot de passe unique donné est invalide ou a expiré.</target>
