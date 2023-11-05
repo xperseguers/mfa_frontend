@@ -108,8 +108,13 @@ class TotpSettings
             'lastUsed' => 0,
         ];
 
+        // No need to store "empty" configuration
+        if (empty($mfa['totp']['secret'])) {
+            unset($mfa['totp']);
+        }
+
         return [
-            $mfaField => json_encode($mfa),
+            $mfaField => empty($mfa) ? null : json_encode($mfa),
         ];
     }
 }
