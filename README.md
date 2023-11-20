@@ -1,7 +1,9 @@
 # MFA Frontend
 
+[![Latest Stable Version](https://poser.pugx.org/causal/mfa-frontend/v/stable)](https://extensions.typo3.org/extension/mfa_frontend/)
 ![GitHub license](https://img.shields.io/github/license/xperseguers/mfa_frontend.svg?style=flat-square&label=License)
 [![Crowdin](https://badges.crowdin.net/typo3-extension-mfafrontend/localized.svg)](https://crowdin.com/project/typo3-extension-mfafrontend)
+[![Total Downloads](https://poser.pugx.org/causal/mfa-frontend/d/total)](https://packagist.org/packages/causal/mfa-frontend)
 
 This extension adds support for Multi-Factor Authentication (MFA) to TYPO3's
 Frontend.
