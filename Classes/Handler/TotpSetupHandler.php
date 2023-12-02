@@ -85,7 +85,7 @@ class TotpSetupHandler
         $this->totpSettingsDto->setNewSettings($newSettings);
 
         $this->totpSettingsDto->setOneTimePassword(
-            str_replace(' ', '', $fieldArray['tx_mfafrontend_otp'])
+            str_replace(' ', '', $fieldArray['tx_mfafrontend_otp'] ?? '')
         );
     }
 
