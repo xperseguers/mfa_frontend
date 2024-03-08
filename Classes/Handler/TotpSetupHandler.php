@@ -19,6 +19,7 @@ namespace Causal\MfaFrontend\Handler;
 use Causal\MfaFrontend\Domain\Model\Dto\PreprocessFieldArrayDto;
 use Causal\MfaFrontend\Domain\Model\Dto\TotpSettingsDto;
 use Causal\MfaFrontend\Domain\Model\TotpSettings;
+use Causal\MfaFrontend\Event\DisableTotpEvent;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -144,6 +145,22 @@ class TotpSetupHandler
             $this->totpSettingsDto->getOldSettings()->getSecret(),
             $this->totpSettingsDto->getOneTimePassword()
         );
+
+        if (!$isValid) {
+            // Raise an event to enable 3rd party extensions to implement
+            // their own business logic and possibly override the default
+            // behavior that requires a valid OTP to disable MFA.
+            // Note: by default, TYPO3 administrators are allowed to disable
+            // MFA without providing a valid OTP.
+            $bypassValidation = $GLOBALS['BE_USER']->isAdmin();
+            $event = new DisableTotpEvent(
+                $this->preprocessFieldArrayDto->getTable(),
+                $this->preprocessFieldArrayDto->getId(),
+                $bypassValidation
+            );
+            $this->eventDispatcher->dispatch($event);
+            $isValid = $event->getBypassValidation();
+        }
 
         if ($isValid) {
             $this->disableAuthenticator();
