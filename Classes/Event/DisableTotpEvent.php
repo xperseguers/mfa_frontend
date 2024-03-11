@@ -16,8 +16,6 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Event;
 
-use Causal\MfaFrontend\Domain\Model\FrontendUser;
-
 final class DisableTotpEvent
 {
     private string $table;
