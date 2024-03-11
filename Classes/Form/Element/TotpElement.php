@@ -22,28 +22,48 @@ use Causal\MfaFrontend\Traits\IssuerTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
+use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class TotpElement extends AbstractFormElement
+$typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
+if (version_compare($typo3Version->getBranch(), '13.0', '>=')) {
+    abstract class ParentElementClass extends AbstractFormElement {
+        protected EventDispatcherInterface $eventDispatcher;
+        protected SecretFactory $secretFactory;
+
+        public function __construct()
+        {
+            // Unfortunately DI cannot be used here, as the form element is instantiated
+            // by the Core and "array" is not a valid type hint for the constructor
+            $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
+            $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
+        }
+    }
+} else {
+    abstract class ParentElementClass extends AbstractFormElement {
+        protected EventDispatcherInterface $eventDispatcher;
+        protected SecretFactory $secretFactory;
+
+        public function __construct(NodeFactory $nodeFactory, array $data)
+        {
+            parent::__construct($nodeFactory, $data);
+
+            // Unfortunately DI cannot be used here, as the form element is instantiated
+            // by the Core and "array" is not a valid type hint for the constructor
+            $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
+            $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
+        }
+    }
+}
+
+class TotpElement extends ParentElementClass
 {
     use IssuerTrait;
 
-    protected EventDispatcherInterface $eventDispatcher;
-
-    protected SecretFactory $secretFactory;
-
     protected ?TotpSecret $totpSecret = null;
-
-    public function __construct(NodeFactory $nodeFactory, array $data)
-    {
-        parent::__construct($nodeFactory, $data);
-
-        // Unfortunately DI cannot be used here, as the form element is instantiated
-        // by the Core and "array" is not a valid type hint for the constructor
-        $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
-        $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
-    }
 
     public function render(): array
     {
