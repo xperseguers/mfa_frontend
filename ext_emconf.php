@@ -10,7 +10,7 @@ $EM_CONF[$_EXTKEY] = [
     'title' => 'MFA Frontend',
     'description' => 'Enable MFA (Multi-Factor Authentication) for Frontend accounts.',
     'category' => 'services',
-    'version' => '1.1.0-dev',
+    'version' => '1.1.0',
     'state' => 'stable',
     'createDirs' => '',
     'author' => 'Xavier Perseguers',
@@ -19,7 +19,7 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'php' => '7.4.0-8.3.99',
-            'typo3' => '10.4.0-13.0.99'
+            'typo3' => '10.4.0-12.4.99'
         ],
         'conflicts' => [],
         'suggests' => [],
