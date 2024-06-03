@@ -32,15 +32,11 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
 $typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
 if (version_compare($typo3Version->getBranch(), '13.0', '>=')) {
     abstract class ParentElementClass extends AbstractFormElement {
-        protected EventDispatcherInterface $eventDispatcher;
-        protected SecretFactory $secretFactory;
-
-        public function __construct()
+        public function __construct(
+            protected readonly EventDispatcherInterface $eventDispatcher,
+            protected readonly SecretFactory $secretFactory
+        )
         {
-            // Unfortunately DI cannot be used here, as the form element is instantiated
-            // by the Core and "array" is not a valid type hint for the constructor
-            $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
-            $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
         }
     }
 } else {
