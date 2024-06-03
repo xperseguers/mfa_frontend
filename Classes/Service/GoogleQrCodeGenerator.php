@@ -16,7 +16,7 @@ use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
 /**
  * QR code image generator
  *
- * This class uses Googles chart API to generate a QR code image.
+ * This class uses Scrippter chart API to generate a QR code image.
  * This QR code can then be captured with the phone camera to
  * automatically set up the service in the Google Authenticator app.
  */
@@ -29,7 +29,7 @@ class GoogleQrCodeGenerator
         CORRECTION_H = 'H'      // recover 30% data loss
     ;
 
-    protected const BASE_URL = 'https://chart.googleapis.com/';
+    protected const BASE_URL = 'https://chart.scrippter.com/';
 
     protected int $width;
 
