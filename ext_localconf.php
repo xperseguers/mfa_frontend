@@ -35,6 +35,12 @@ defined('TYPO3') || die();
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][]
         = \Causal\MfaFrontend\Hook\DataHandler::class;
 
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1717417070] = [
+        'nodeName' => 'MfaFrontendEnable',
+        'priority' => 40,
+        'class' => \Causal\MfaFrontend\Backend\Form\Element\CheckboxElement::class,
+    ];
+
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1697740814] = [
         'nodeName' => 'MfaFrontendTotp',
         'priority' => 40,
