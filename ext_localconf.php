@@ -47,11 +47,4 @@ defined('TYPO3') || die();
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['CfGoogleAuthenticatorMigrationWizard']
             = \Causal\MfaFrontend\Update\CfGoogleAuthenticatorMigrationWizard::class;
     }
-
-    if (version_compare($typo3Version->getBranch(), '10.4', '=')) {
-        if (!class_exists('Base32\\Base32')) {
-            include_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Private/CompatibilityV10/Base32.php';
-        }
-        include_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Resources/Private/CompatibilityV10/Totp.php';
-    }
 })('mfa_frontend');
