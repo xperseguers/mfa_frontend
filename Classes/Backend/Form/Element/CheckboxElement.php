@@ -18,6 +18,7 @@ namespace Causal\MfaFrontend\Backend\Form\Element;
 
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\Element\CheckboxToggleElement;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class CheckboxElement extends AbstractFormElement
@@ -29,10 +30,19 @@ class CheckboxElement extends AbstractFormElement
 
         $value = $this->isTotpEnabled() ? 1 : 0;
         $itePA['itemFormElValue'] = $value;
+
+        $typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
         $itePA['fieldConf']['config'] = [
-            'items' => [
-                ['', ''],
-            ]
+            'items' => version_compare($typo3Version->getBranch(), '12.0', '>=')
+                ? [
+                    [
+                        'label' => '',
+                        'value' => '',
+                    ],
+                ]
+                : [
+                    ['', ''],
+                ],
         ];
 
         $data = [
@@ -42,7 +52,12 @@ class CheckboxElement extends AbstractFormElement
             'parameterArray' => $itePA,
             'processedTca' => $this->data['processedTca'],
         ];
-        $toggleElement = GeneralUtility::makeInstance(CheckboxToggleElement::class, $this->nodeFactory, $data);
+        if (version_compare($typo3Version->getBranch(), '13.0', '>=')) {
+            $toggleElement = GeneralUtility::makeInstance(CheckboxToggleElement::class);
+            $toggleElement->setData($data);
+        } else {
+            $toggleElement = GeneralUtility::makeInstance(CheckboxToggleElement::class, $this->nodeFactory, $data);
+        }
         $result = $toggleElement->render();
 
         $out = [];
