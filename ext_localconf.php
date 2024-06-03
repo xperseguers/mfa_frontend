@@ -38,7 +38,7 @@ defined('TYPO3') || die();
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1697740814] = [
         'nodeName' => 'MfaFrontendTotp',
         'priority' => 40,
-        'class' => \Causal\MfaFrontend\Form\Element\TotpElement::class,
+        'class' => \Causal\MfaFrontend\Backend\Form\Element\TotpElement::class,
     ];
 
     $typo3Version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);

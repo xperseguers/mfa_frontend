@@ -14,7 +14,7 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Causal\MfaFrontend\Form\Element;
+namespace Causal\MfaFrontend\Backend\Form\Element;
 
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
 use Causal\MfaFrontend\Domain\SecretFactory;
