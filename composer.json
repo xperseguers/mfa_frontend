@@ -30,8 +30,8 @@
   ],
   "license": "GPL-3.0-or-later",
   "require": {
-    "php": ">=7.4.0 <=7.4.99 || >=8.0.0 <=8.3.99",
-    "typo3/cms-core": "^10 || ^11 || ^12",
+    "php": ">=8.0.0 <=8.3.99",
+    "typo3/cms-core": "^11 || ^12",
     "chillerlan/php-qrcode": "^4.3 || 5.0-beta"
   },
   "autoload": {
@@ -41,7 +41,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "1.1.x-dev"
+      "dev-main": "1.2.x-dev"
     },
     "typo3/cms": {
       "extension-key": "mfa_frontend"
