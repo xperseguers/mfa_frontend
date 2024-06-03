@@ -82,21 +82,15 @@ setup:
            'exclude' => false,
            'label' => 'LLL:EXT:mfa_frontend/Resources/Private/Language/locallang_db.xlf:fe_users.tx_mfafrontend_enable',
            'config' => [
-               'type' => 'check',
-               'renderType' => 'checkboxToggle',
-               'items' => [
-                   [
-                       0 => '',
-                       1 => '',
-                   ]
-               ],
+               'type' => 'none',
+               'renderType' => 'MfaFrontendEnable',
            ]
        ],
        'tx_mfafrontend_secret' => [
            'exclude' => false,
            'label' => 'LLL:EXT:mfa_frontend/Resources/Private/Language/locallang_db.xlf:fe_users.tx_mfafrontend_secret',
            'config' => [
-               'type' => 'user',
+               'type' => 'none',
                'renderType' => 'MfaFrontendTotp',
            ]
        ],

@@ -73,7 +73,7 @@ class SetupController extends ActionController
         $this->typo3Branch = (new Typo3Version())->getBranch();
     }
 
-    public function indexAction()
+    public function indexAction(): ResponseInterface
     {
         if ($this->isUserLoggedIn()) {
             $totpSecret = $this->getTotpSecret();
@@ -90,9 +90,6 @@ class SetupController extends ActionController
             );
         }
 
-        if (version_compare($this->typo3Branch, '11.5', '<')) {
-            return;
-        }
         return $this->htmlResponse($this->view->render());
     }
 
@@ -165,30 +162,17 @@ class SetupController extends ActionController
             return new RedirectResponse('index');
         }
 
-        if (version_compare($this->typo3Branch, '11.5', '>=')) {
-            /** @var ExtbaseRequestParameters $extbaseRequestParameters */
-            $extbaseRequestParameters = clone $this->request->getAttribute('extbase');
-            $originalResult = $extbaseRequestParameters->getOriginalRequestMappingResults();
+        /** @var ExtbaseRequestParameters $extbaseRequestParameters */
+        $extbaseRequestParameters = clone $this->request->getAttribute('extbase');
+        $originalResult = $extbaseRequestParameters->getOriginalRequestMappingResults();
 
-            $formObject = $this->getFormObject();
-            $results = $this->setupFormValidator->validate($formObject);
-            $results->merge($originalResult);
+        $formObject = $this->getFormObject();
+        $results = $this->setupFormValidator->validate($formObject);
+        $results->merge($originalResult);
 
-            if ($results->hasErrors()) {
-                return (new ForwardResponse('index'))
-                    ->withArgumentsValidationResult($results);
-            }
-        } else {
-            // TYPO3 v10
-            $formObject = $this->getFormObject();
-            $results = $this->setupFormValidator->validate($formObject);
-
-            $this->request->setOriginalRequest(clone $this->request);
-            $this->request->setOriginalRequestMappingResults($results);
-
-            if ($results->hasErrors()) {
-                $this->forward('index');
-            }
+        if ($results->hasErrors()) {
+            return (new ForwardResponse('index'))
+                ->withArgumentsValidationResult($results);
         }
 
         return null;
@@ -214,10 +198,6 @@ class SetupController extends ActionController
 
     protected function getFrontendUser(): array
     {
-        if (version_compare($this->typo3Branch, '11.5', '<')) {
-            return $GLOBALS['TSFE']->fe_user->user;
-        }
-
         return $this->request->getAttribute('frontend.user')->user;
     }
 

@@ -14,10 +14,11 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace Causal\MfaFrontend\Form\Element;
+namespace Causal\MfaFrontend\Backend\Form\Element;
 
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
 use Causal\MfaFrontend\Domain\SecretFactory;
+use Causal\MfaFrontend\Event\DisableTotpEvent;
 use Causal\MfaFrontend\Traits\IssuerTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
@@ -70,13 +71,30 @@ class TotpElement extends ParentElementClass
         $result = $this->initializeResultArray();
         $templateView = $this->initializeTemplateView();
         $isEnabled = $this->isTotpEnabled();
+        $tableName = $this->data['tableName'] ?? null;
+        $recordUid = $this->data['databaseRow']['uid'] ?? null;
+
+        if ($isEnabled && $tableName !== null && $recordUid !== null) {
+            $bypassValidation = $GLOBALS['BE_USER']->isAdmin();
+            $event = new DisableTotpEvent(
+                $tableName,
+                $recordUid,
+                $bypassValidation
+            );
+            $this->eventDispatcher->dispatch($event);
+            if ($event->getBypassValidation()) {
+                // No need to provide a TOTP to disable
+                $result['html'] = '';
+                return $result;
+            }
+        }
 
         $prefix = '';
-        if ($this->data['tableName'] !== null) {
-            $prefix .= sprintf('[%s]', $this->data['tableName']);
+        if ($tableName !== null) {
+            $prefix .= sprintf('[%s]', $tableName);
         }
-        if ($this->data['databaseRow']['uid'] !== null) {
-            $prefix .= sprintf('[%s]', $this->data['databaseRow']['uid']);
+        if ($recordUid !== null) {
+            $prefix .= sprintf('[%s]', $recordUid);
         }
 
         $templateView->assignMultiple([

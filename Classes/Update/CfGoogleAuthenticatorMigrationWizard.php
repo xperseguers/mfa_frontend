@@ -24,6 +24,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
+/**
+ * @deprecated since version 1.2.0, will be removed in 1.3.0.
+ */
 class CfGoogleAuthenticatorMigrationWizard implements UpgradeWizardInterface
 {
     use MfaFieldTrait;

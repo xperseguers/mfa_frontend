@@ -30,9 +30,9 @@
   ],
   "license": "GPL-3.0-or-later",
   "require": {
-    "php": ">=7.4.0 <=7.4.99 || >=8.0.0 <=8.3.99",
-    "typo3/cms-core": "^10 || ^11 || ^12 || ^13",
-    "chillerlan/php-qrcode": "^4.3 || 5.0-beta"
+    "php": ">=8.0.0 <=8.3.99",
+    "typo3/cms-core": "^11 || ^12 || ^13",
+    "bacon/bacon-qr-code": "^2.0.4"
   },
   "autoload": {
     "psr-4": {
@@ -41,7 +41,8 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "1.1.x-dev"
+      "dev-main": "1.2.x-dev",
+      "dev-feature/TYPO3v10": "1.1.x-dev"
     },
     "typo3/cms": {
       "extension-key": "mfa_frontend"
