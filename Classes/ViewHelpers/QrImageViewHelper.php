@@ -16,11 +16,11 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\ViewHelpers;
 
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
-use Causal\MfaFrontend\Service\GoogleQrCodeGenerator;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
@@ -39,7 +39,6 @@ class QrImageViewHelper extends AbstractTagBasedViewHelper
         $this->registerArgument('secret', TotpSecret::class, 'TOTP secret');
         $this->registerArgument('alt', 'string', 'Specifies an alternate text for the image', false, 'QR code');
         $this->registerArgument('size', 'int', 'width/height of the QR code', false, 200);
-        $this->registerArgument('correction', 'string', 'Either "L" to recover 7% of data loss, "M" (15%), "Q" (25%) or "H" (30%)', false, 'L');
     }
 
     /**
@@ -53,45 +52,18 @@ class QrImageViewHelper extends AbstractTagBasedViewHelper
         $totpSecret = $this->arguments['secret'];
         $alt = $this->arguments['alt'];
         $size = (int)$this->arguments['size'];
-        $correction = $this->arguments['correction'];
 
         if ($totpSecret === null) {
-            throw new Exception('You must specify an TotpSecret object.', 1697747858);
+            throw new Exception('You must specify a TotpSecret object.', 1697747858);
         }
 
-        if (class_exists(QRCode::class)) {
-            $options = new QROptions();
-            $options->level = 7;
-            switch ($correction) {
-                case 'H':
-                    $options->eccLevel = QRCode::ECC_H;
-                    break;
-                case 'Q':
-                    $options->eccLevel = QRCode::ECC_Q;
-                    break;
-                case 'M':
-                    $options->eccLevel = QRCode::ECC_M;
-                    break;
-                case 'L':
-                default:
-                    $options->eccLevel = QRCode::ECC_L;
-                    break;
-            }
-            $imageUri = (new QRCode($options))->render($totpSecret->getUri());
-        } else {
-            // Fallback, needed when not using Composer since 3rd-party library is
-            // (at least currently) not distributed with the .t3x available off TER.
-            if (!in_array($correction, ['L', 'M', 'Q', 'H'], true)) {
-                $correction = 'L';
-            }
-            $qrCodeGenerator = GeneralUtility::makeInstance(
-                GoogleQrCodeGenerator::class,
-                $size,
-                $size,
-                $correction
-            );
-            $imageUri = $qrCodeGenerator->generateUri($totpSecret);
-        }
+        $qrCodeRenderer = new ImageRenderer(
+            new RendererStyle($size, 4),
+            new SvgImageBackEnd()
+        );
+
+        $svg = (new Writer($qrCodeRenderer))->writeString($totpSecret->getUri());
+        $imageUri = 'data:image/svg+xml;base64,' . base64_encode($svg);
 
         $this->tag->addAttribute('src', $imageUri);
         $this->tag->addAttribute('width', $size);
