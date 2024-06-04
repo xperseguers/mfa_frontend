@@ -24,6 +24,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;
 use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
@@ -83,6 +84,15 @@ class TotpElement extends ParentElementClass
                 $result['html'] = '';
                 return $result;
             }
+        }
+
+        $typo3Version = (new Typo3Version())->getMajorVersion();
+        if ($typo3Version >= 12) {
+            $result['javaScriptModules'][] = JavaScriptModuleInstruction::create('@causal/mfa-frontend/totp-element.js');
+        } else {
+            $resultArray['requireJsModules']['locationMap'] = [
+                'TYPO3/CMS/MfaFrontend/Backend/TotpElement' => 'function(TotpElement) {}'
+            ];
         }
 
         $prefix = '';
