@@ -41,7 +41,12 @@ class TotpElement {
             }
         }
 
+        // If we are early in the party
         document.addEventListener('DOMContentLoaded', update);
+        // If late, thus "on time"
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            update();
+        }
     }
 }
 
