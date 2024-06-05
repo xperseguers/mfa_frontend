@@ -47,7 +47,9 @@ This extension does not store any personal data. It only stores the secret used
 by the configured MFA method in the ``fe_users`` table (field ``mfa_frontend``).
 
 When configuring TOTP, a QR code is generated to let the user configure their
-Authenticator app.
+Authenticator app. The QR code is generated with local libraries and not with
+any third-party service (like Google's QR code generator) to avoid leaking any
+information to third parties.
 
 .. _support:
 
