@@ -64,7 +64,7 @@ class TotpElement extends ParentElementClass
 
     public function render(): array
     {
-        $result = $this->initializeResultArray();
+        $resultArray = $this->initializeResultArray();
         $templateView = $this->initializeTemplateView();
         $isEnabled = $this->isTotpEnabled();
         $tableName = $this->data['tableName'] ?? null;
@@ -80,13 +80,13 @@ class TotpElement extends ParentElementClass
             $this->eventDispatcher->dispatch($event);
             if ($event->getBypassValidation()) {
                 // No need to provide a TOTP to disable
-                $result['html'] = '';
-                return $result;
+                $resultArray['html'] = '';
+                return $resultArray;
             }
         }
 
         if ((new Typo3Version())->getMajorVersion() >= 12) {
-            $result['javaScriptModules'][] = JavaScriptModuleInstruction::create('@causal/mfa-frontend/totp-element.js');
+            $resultArray['javaScriptModules'][] = JavaScriptModuleInstruction::create('@causal/mfa-frontend/totp-element.js');
         } else {
             $resultArray['requireJsModules']['locationMap'] = [
                 'TYPO3/CMS/MfaFrontend/Backend/TotpElement' => 'function(TotpElement) {}'
@@ -107,9 +107,9 @@ class TotpElement extends ParentElementClass
             'totpSecret' => $this->getTotpSecret(),
         ]);
 
-        $result['html'] = $templateView->render();
+        $resultArray['html'] = $templateView->render();
 
-        return $result;
+        return $resultArray;
     }
 
     protected function initializeTemplateView(): StandaloneView
