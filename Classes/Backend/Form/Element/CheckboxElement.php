@@ -32,6 +32,11 @@ class CheckboxElement extends AbstractFormElement
         $value = $this->isTotpEnabled() ? 1 : 0;
         $itePA['itemFormElValue'] = $value;
 
+        if ($typo3Version === 12) {
+            // TYPO3 v12 only: the label is displayed twice without that flag
+            $resultArray['labelHasBeenHandled'] = true;
+        }
+
         $itePA['fieldConf']['config'] = [
             'items' => $typo3Version >= 12
                 ? [
