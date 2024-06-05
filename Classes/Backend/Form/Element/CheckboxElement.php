@@ -16,12 +16,39 @@ declare(strict_types=1);
 
 namespace Causal\MfaFrontend\Backend\Form\Element;
 
+use Causal\MfaFrontend\Domain\SecretFactory;
+use Causal\MfaFrontend\Event\DisableTotpEvent;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\Element\CheckboxToggleElement;
+use TYPO3\CMS\Backend\Form\NodeFactory;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class CheckboxElement extends AbstractFormElement
+if ((new Typo3Version())->getMajorVersion() >= 13) {
+    abstract class ParentCheckboxElementClass extends AbstractFormElement {
+        public function __construct(
+            protected readonly EventDispatcherInterface $eventDispatcher
+        )
+        {
+        }
+    }
+} else {
+    abstract class ParentCheckboxElementClass extends AbstractFormElement {
+        protected EventDispatcherInterface $eventDispatcher;
+
+        public function __construct(NodeFactory $nodeFactory, array $data)
+        {
+            parent::__construct($nodeFactory, $data);
+
+            // Unfortunately DI cannot be used here, as the form element is instantiated
+            // by the Core and "array" is not a valid type hint for the constructor
+            $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
+        }
+    }
+}
+
+class CheckboxElement extends ParentCheckboxElementClass
 {
     public function render(): array
     {
@@ -35,6 +62,20 @@ class CheckboxElement extends AbstractFormElement
         if ($typo3Version === 12) {
             // TYPO3 v12 only: the label is displayed twice without that flag
             $resultArray['labelHasBeenHandled'] = true;
+        }
+
+        if ($value === 1 && empty($itePA['fieldConf']['description'])) {
+            $bypassValidation = $GLOBALS['BE_USER']->isAdmin();
+            $event = new DisableTotpEvent(
+                $this->data['tableName'],
+                $this->data['databaseRow']['uid'],
+                $bypassValidation
+            );
+            $this->eventDispatcher->dispatch($event);
+            if ($event->getBypassValidation()) {
+                $labelKey = 'LLL:EXT:mfa_frontend/Resources/Private/Language/locallang_db.xlf:fe_users.tx_mfafrontend_enable.descriptionAdmin';
+                $itePA['fieldConf']['description'] = $GLOBALS['LANG']->sL($labelKey);
+            }
         }
 
         $itePA['fieldConf']['config'] = [

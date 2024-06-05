@@ -31,7 +31,7 @@ use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 if ((new Typo3Version())->getMajorVersion() >= 13) {
-    abstract class ParentElementClass extends AbstractFormElement {
+    abstract class ParentTotpElementClass extends AbstractFormElement {
         public function __construct(
             protected readonly EventDispatcherInterface $eventDispatcher,
             protected readonly SecretFactory $secretFactory
@@ -40,7 +40,7 @@ if ((new Typo3Version())->getMajorVersion() >= 13) {
         }
     }
 } else {
-    abstract class ParentElementClass extends AbstractFormElement {
+    abstract class ParentTotpElementClass extends AbstractFormElement {
         protected EventDispatcherInterface $eventDispatcher;
         protected SecretFactory $secretFactory;
 
@@ -56,7 +56,7 @@ if ((new Typo3Version())->getMajorVersion() >= 13) {
     }
 }
 
-class TotpElement extends ParentElementClass
+class TotpElement extends ParentTotpElementClass
 {
     use IssuerTrait;
 

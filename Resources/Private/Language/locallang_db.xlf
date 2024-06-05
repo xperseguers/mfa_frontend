@@ -9,6 +9,9 @@
             <trans-unit id="fe_users.tx_mfafrontend_enable">
                 <source>Enable Time-based One Time Password (TOTP)</source>
             </trans-unit>
+            <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin">
+                <source>Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</source>
+            </trans-unit>
             <trans-unit id="fe_users.tx_mfafrontend_secret">
                 <source>TOTP configuration</source>
             </trans-unit>
