@@ -11,9 +11,9 @@
         <source>Enable Time-based One Time Password (TOTP)</source>
         <target state="final">Ativar a palavra-passe de uso único baseada no tempo (TOTP)</target>
       </trans-unit>
-      <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin">
+      <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin" approved="yes">
         <source>Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</source>
-        <target state="needs-translation">Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</target>
+        <target state="final">Importante: Como administrador, não é necessário introduzir uma palavra-passe única válida para desativar a autenticação de dois factores.</target>
       </trans-unit>
       <trans-unit id="fe_users.tx_mfafrontend_secret" approved="yes">
         <source>TOTP configuration</source>
