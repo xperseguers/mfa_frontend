@@ -30,6 +30,7 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -55,8 +56,6 @@ class SetupController extends ActionController
 
     protected Context $context;
 
-    protected string $typo3Branch;
-
     protected ?TotpSecret $totpSecret = null;
 
     public function __construct(
@@ -70,7 +69,6 @@ class SetupController extends ActionController
         $this->setupFormValidator = $setupFormValidator;
         $this->secretFactory = $secretFactory;
         $this->context = $context;
-        $this->typo3Branch = (new Typo3Version())->getBranch();
     }
 
     public function indexAction(): ResponseInterface
@@ -118,10 +116,16 @@ class SetupController extends ActionController
                 $event = new ToggleTotpEvent($action, $user);
                 $this->eventDispatcher->dispatch($event);
 
+                if ((new Typo3Version())->getMajorVersion() >= 12) {
+                    $severity = ContextualFeedbackSeverity::OK;
+                } else {
+                    $severity = FlashMessage::OK;
+                }
+
                 $this->addFlashMessage(
                     $this->translate('success.' . $action . '.body'),
                     $this->translate('success.title'),
-                    FlashMessage::OK
+                    $severity
                 );
             }
         }

@@ -9,7 +9,7 @@ This extension adds support for Multi-Factor Authentication (MFA) to TYPO3's
 Frontend.
 
 It has been initially inspired by the extension
-[[codeFareith] Google Authenticator](https://extensions.typo3.org/extension/cf_google_authenticator)
+[[codeFareith] Google Authenticator](https://extensions.typo3.org/extension/cf_google_authenticator),
 but it has been rewritten and extended as that former extension was not
 actively maintained anymore. Thanks to the original author
 Robin "codeFareith" von den Bergen for the inspiration!
@@ -20,7 +20,7 @@ Robin "codeFareith" von den Bergen for the inspiration!
 - Plugin to add/remove TOTP setup to one's profile (`fe_users`).
 - Support for removing MFA protection for a given user ("administrator mode")
   as any larger TYPO3 installation will have for sure a few users who will
-  loose/change their phone or access to their MFA application and will need to
+  lose/change their phone or access to their MFA application and will need to
   be helped by an administrator.
 
 ## Planned features

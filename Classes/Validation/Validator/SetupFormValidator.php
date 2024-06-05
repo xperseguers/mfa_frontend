@@ -23,8 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 
-$typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
-if (version_compare($typo3Version->getBranch(), '12.0', '>=')) {
+if ((new Typo3Version())->getMajorVersion() >= 12) {
     class ParentValidatorClass extends AbstractGenericObjectValidator {}
 } else {
     class ParentValidatorClass extends GenericObjectValidator {}

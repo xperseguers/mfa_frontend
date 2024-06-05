@@ -1,11 +1,12 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:be.pageRenderer
-    includeRequireJsModules="{
-        0: 'TYPO3/CMS/MfaFrontend/Backend/TotpElement'
-    }"
-/>
+<f:variable name="badgeClass"><f:spaceless>
+    <f:if condition="{typo3Version}==11">
+        <f:then>badge-info</f:then>
+        <f:else>badge-primary</f:else>
+    </f:if>
+</f:spaceless></f:variable>
 
 <div class="form-group" style="max-width: 400px">
     <f:if condition="{isEnabled}">
@@ -14,23 +15,26 @@
                 partial="Backend/Form/OneTimePassword"
                 arguments="{
                     isEnabled: 1,
-                    prefix: prefix
+                    prefix: prefix,
+                    badgeClass: badgeClass
                 }"
             />
         </f:then>
         <f:else>
-            <f:render partial="Backend/Form/QrCode" arguments="{totpSecret: totpSecret}"/>
+            <f:render partial="Backend/Form/QrCode" arguments="{totpSecret: totpSecret, badgeClass: badgeClass}"/>
             <f:render
                 partial="Backend/Form/Secret"
                 arguments="{
                     secret: totpSecret.secretKey,
-                    prefix: prefix
+                    prefix: prefix,
+                    badgeClass: badgeClass
                 }"
             />
             <f:render
                 partial="Backend/Form/OneTimePassword"
                 arguments="{
-                    prefix: prefix
+                    prefix: prefix,
+                    badgeClass: badgeClass
                 }"
             />
         </f:else>

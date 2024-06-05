@@ -23,32 +23,48 @@ use Causal\MfaFrontend\Traits\IssuerTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
+use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-class TotpElement extends AbstractFormElement
+if ((new Typo3Version())->getMajorVersion() >= 13) {
+    abstract class ParentTotpElementClass extends AbstractFormElement {
+        public function __construct(
+            protected readonly EventDispatcherInterface $eventDispatcher,
+            protected readonly SecretFactory $secretFactory
+        )
+        {
+        }
+    }
+} else {
+    abstract class ParentTotpElementClass extends AbstractFormElement {
+        protected EventDispatcherInterface $eventDispatcher;
+        protected SecretFactory $secretFactory;
+
+        public function __construct(NodeFactory $nodeFactory, array $data)
+        {
+            parent::__construct($nodeFactory, $data);
+
+            // Unfortunately DI cannot be used here, as the form element is instantiated
+            // by the Core and "array" is not a valid type hint for the constructor
+            $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
+            $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
+        }
+    }
+}
+
+class TotpElement extends ParentTotpElementClass
 {
     use IssuerTrait;
 
-    protected EventDispatcherInterface $eventDispatcher;
-
-    protected SecretFactory $secretFactory;
-
     protected ?TotpSecret $totpSecret = null;
-
-    public function __construct(NodeFactory $nodeFactory, array $data)
-    {
-        parent::__construct($nodeFactory, $data);
-
-        // Unfortunately DI cannot be used here, as the form element is instantiated
-        // by the Core and "array" is not a valid type hint for the constructor
-        $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcherInterface::class);
-        $this->secretFactory = GeneralUtility::makeInstance(SecretFactory::class);
-    }
 
     public function render(): array
     {
-        $result = $this->initializeResultArray();
+        $resultArray = $this->initializeResultArray();
         $templateView = $this->initializeTemplateView();
         $isEnabled = $this->isTotpEnabled();
         $tableName = $this->data['tableName'] ?? null;
@@ -64,9 +80,17 @@ class TotpElement extends AbstractFormElement
             $this->eventDispatcher->dispatch($event);
             if ($event->getBypassValidation()) {
                 // No need to provide a TOTP to disable
-                $result['html'] = '';
-                return $result;
+                $resultArray['html'] = '';
+                return $resultArray;
             }
+        }
+
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $resultArray['javaScriptModules'][] = JavaScriptModuleInstruction::create('@causal/mfa-frontend/totp-element.js');
+        } else {
+            $resultArray['requireJsModules']['locationMap'] = [
+                'TYPO3/CMS/MfaFrontend/Backend/TotpElement' => 'function(TotpElement) {}'
+            ];
         }
 
         $prefix = '';
@@ -78,14 +102,15 @@ class TotpElement extends AbstractFormElement
         }
 
         $templateView->assignMultiple([
+            'typo3Version' => (new Typo3Version())->getMajorVersion(),
             'prefix' => $prefix,
             'isEnabled' => $isEnabled,
             'totpSecret' => $this->getTotpSecret(),
         ]);
 
-        $result['html'] = $templateView->render();
+        $resultArray['html'] = $templateView->render();
 
-        return $result;
+        return $resultArray;
     }
 
     protected function initializeTemplateView(): StandaloneView
