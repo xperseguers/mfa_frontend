@@ -12,22 +12,23 @@ define(
           inputOtp: '[name$="[tx_mfafrontend_otp]"]',
           formSection: '.form-section'
         },
-        $iFrame = $(selectors.iFrame),
-        $inputEnable = $iFrame.find(selectors.inputEnable);
+        iFrame = $(selectors.iFrame),
+        inputEnable = iFrame.find(selectors.inputEnable);
 
-      $iFrame.on(
+      iFrame.on(
         'click',
         selectors.inputEnable,
         update
       );
 
       function update() {
-        let isEnabled = $inputEnable.prop('checked');
+        const isEnabled = inputEnable.prop('checked');
+        const formSection = iFrame.find(selectors.inputSecret).closest(selectors.formSection);
 
         if (isEnabled === true) {
-          $iFrame.find(selectors.inputSecret).closest(selectors.formSection).slideDown();
+          formSection.slideDown();
         } else {
-          $iFrame.find(selectors.inputSecret).closest(selectors.formSection).slideUp();
+          formSection.slideUp();
         }
       }
 
