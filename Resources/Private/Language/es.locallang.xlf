@@ -3,9 +3,9 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="es-ES">
     <header/>
     <body>
-      <trans-unit id="qrImage">
+      <trans-unit id="qrImage" approved="yes">
         <source>Google Authenticator QR-Code</source>
-        <target state="needs-translation">Google Authenticator QR-Code</target>
+        <target state="final">Código QR de Google Authenticator</target>
       </trans-unit>
       <trans-unit id="otp" approved="yes">
         <source>One-time password</source>
