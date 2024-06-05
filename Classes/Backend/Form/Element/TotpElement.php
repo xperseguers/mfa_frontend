@@ -102,6 +102,7 @@ class TotpElement extends ParentElementClass
         }
 
         $templateView->assignMultiple([
+            'typo3Version' => (new Typo3Version())->getMajorVersion(),
             'prefix' => $prefix,
             'isEnabled' => $isEnabled,
             'totpSecret' => $this->getTotpSecret(),
