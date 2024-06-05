@@ -25,15 +25,15 @@ class CheckboxElement extends AbstractFormElement
 {
     public function render(): array
     {
+        $typo3Version = (new Typo3Version())->getMajorVersion();
         $resultArray = $this->initializeResultArray();
         $itePA = $this->data['parameterArray'];
 
         $value = $this->isTotpEnabled() ? 1 : 0;
         $itePA['itemFormElValue'] = $value;
 
-        $typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
         $itePA['fieldConf']['config'] = [
-            'items' => version_compare($typo3Version->getBranch(), '12.0', '>=')
+            'items' => $typo3Version >= 12
                 ? [
                     [
                         'label' => '',
@@ -52,7 +52,7 @@ class CheckboxElement extends AbstractFormElement
             'parameterArray' => $itePA,
             'processedTca' => $this->data['processedTca'],
         ];
-        if (version_compare($typo3Version->getBranch(), '13.0', '>=')) {
+        if ($typo3Version >= 13) {
             $toggleElement = GeneralUtility::makeInstance(CheckboxToggleElement::class);
             $toggleElement->setData($data);
         } else {

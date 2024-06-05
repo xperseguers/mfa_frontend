@@ -30,8 +30,7 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
-$typo3Version = GeneralUtility::makeInstance(Typo3Version::class);
-if (version_compare($typo3Version->getBranch(), '13.0', '>=')) {
+if ((new Typo3Version())->getMajorVersion() >= 13) {
     abstract class ParentElementClass extends AbstractFormElement {
         public function __construct(
             protected readonly EventDispatcherInterface $eventDispatcher,
@@ -86,8 +85,7 @@ class TotpElement extends ParentElementClass
             }
         }
 
-        $typo3Version = (new Typo3Version())->getMajorVersion();
-        if ($typo3Version >= 12) {
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
             $result['javaScriptModules'][] = JavaScriptModuleInstruction::create('@causal/mfa-frontend/totp-element.js');
         } else {
             $resultArray['requireJsModules']['locationMap'] = [

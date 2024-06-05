@@ -47,8 +47,8 @@ defined('TYPO3') || die();
         'class' => \Causal\MfaFrontend\Backend\Form\Element\TotpElement::class,
     ];
 
-    $typo3Version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
-    if (version_compare($typo3Version->getBranch(), '13.0', '<')) {
+
+    if ((new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() < 13) {
         // Migrate TOTP setup from EXT:cf_google_authenticator
         // TODO: Drop this in version 1.3.0
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['CfGoogleAuthenticatorMigrationWizard']
