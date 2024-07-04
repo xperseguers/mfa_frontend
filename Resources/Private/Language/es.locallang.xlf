@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="es-ES">
+    <header/>
+    <body>
+      <trans-unit id="qrImage" approved="yes">
+        <source>Google Authenticator QR-Code</source>
+        <target state="final">Código QR de Google Authenticator</target>
+      </trans-unit>
+      <trans-unit id="otp" approved="yes">
+        <source>One-time password</source>
+        <target state="final">Contraseña de un solo uso</target>
+      </trans-unit>
+      <trans-unit id="backend.disableAuthenticator" approved="yes">
+        <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
+        <target state="final">Para desactivar la autenticación de dos factores, desactive el interruptor anterior e introduzca una contraseña válida de un solo uso.</target>
+      </trans-unit>
+      <trans-unit id="totp.step1" approved="yes">
+        <source>Step 1</source>
+        <target state="final">Paso 1</target>
+      </trans-unit>
+      <trans-unit id="totp.step2" approved="yes">
+        <source>Step 2</source>
+        <target state="final">Paso 2</target>
+      </trans-unit>
+      <trans-unit id="totp.step3" approved="yes">
+        <source>Step 3</source>
+        <target state="final">Paso 3</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.title" approved="yes">
+        <source>Scan the displayed QR code</source>
+        <target state="final">Escanee el código QR mostrado</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.body" approved="yes">
+        <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
+        <target state="final">Escanee este código con su aplicación OTP (por ejemplo, Google Authenticator).</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.title" approved="yes">
+        <source>Copy the shared secret</source>
+        <target state="final">Copia el secreto compartido</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.body" approved="yes">
+        <source>You can also enter the shared secret manually in your OTP application or device.</source>
+        <target state="final">También puedes introducir el secreto compartido manualmente en tu aplicación o dispositivo OTP.</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.title" approved="yes">
+        <source>Enter the generated six-digit code</source>
+        <target state="final">Introduzca el código de seis dígitos generado</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.body" approved="yes">
+        <source>This code should now be displayed on your device or in your application.</source>
+        <target state="final">Este código debería aparecer ahora en tu dispositivo o en tu aplicación.</target>
+      </trans-unit>
+      <trans-unit id="disable2FA" approved="yes">
+        <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
+        <target state="final">Para desactivar la autenticación de dos factores, introduzca una contraseña válida de un solo uso y haga clic en el botón DESACTIVAR.</target>
+      </trans-unit>
+      <trans-unit id="success.title" approved="yes">
+        <source>Success!</source>
+        <target state="final">¡Éxito!</target>
+      </trans-unit>
+      <trans-unit id="success.enable.body" approved="yes">
+        <source>Your account is now protected by a two-factor authentication.</source>
+        <target state="final">Tu cuenta está ahora protegida por una autenticación de dos factores.</target>
+      </trans-unit>
+      <trans-unit id="success.disable.body" approved="yes">
+        <source>You disabled the two-factor authentication for your account.</source>
+        <target state="final">Has desactivado la autenticación de dos factores para tu cuenta.</target>
+      </trans-unit>
+      <trans-unit id="action.enable" approved="yes">
+        <source>Enable</source>
+        <target state="final">Activar</target>
+      </trans-unit>
+      <trans-unit id="action.disable" approved="yes">
+        <source>Disable</source>
+        <target state="final">Desactivar</target>
+      </trans-unit>
+      <trans-unit id="validator.secret.tampered" approved="yes">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target state="final">El secreto generado no es válido o ha sido manipulado.</target>
+      </trans-unit>
+      <trans-unit id="validator.otp.notvalid" approved="yes">
+        <source>The given one-time password is invalid or has expired.</source>
+        <target state="final">La contraseña de un solo uso indicada no es válida o ha caducado.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

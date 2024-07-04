@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="el">
+    <header/>
+    <body>
+      <trans-unit id="qrImage">
+        <source>Google Authenticator QR-Code</source>
+        <target state="needs-translation">Google Authenticator QR-Code</target>
+      </trans-unit>
+      <trans-unit id="otp" approved="yes">
+        <source>One-time password</source>
+        <target state="final">Κωδικός πρόσβασης μίας χρήσης</target>
+      </trans-unit>
+      <trans-unit id="backend.disableAuthenticator" approved="yes">
+        <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
+        <target state="final">Για να απενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων, απενεργοποιήστε τον παραπάνω διακόπτη και πληκτρολογήστε έναν έγκυρο κωδικό πρόσβασης μίας χρήσης.</target>
+      </trans-unit>
+      <trans-unit id="totp.step1" approved="yes">
+        <source>Step 1</source>
+        <target state="final">Βήμα 1</target>
+      </trans-unit>
+      <trans-unit id="totp.step2" approved="yes">
+        <source>Step 2</source>
+        <target state="final">Βήμα 2</target>
+      </trans-unit>
+      <trans-unit id="totp.step3" approved="yes">
+        <source>Step 3</source>
+        <target state="final">Βήμα 3</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.title" approved="yes">
+        <source>Scan the displayed QR code</source>
+        <target state="final">Σαρώστε τον εμφανιζόμενο κωδικό QR</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.body" approved="yes">
+        <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
+        <target state="final">Σαρώστε αυτόν τον κωδικό με την εφαρμογή OTP (π.χ. Google Authenticator).</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.title" approved="yes">
+        <source>Copy the shared secret</source>
+        <target state="final">Αντιγράψτε το κοινόχρηστο μυστικό</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.body" approved="yes">
+        <source>You can also enter the shared secret manually in your OTP application or device.</source>
+        <target state="final">Μπορείτε επίσης να εισαγάγετε το κοινόχρηστο μυστικό χειροκίνητα στην εφαρμογή ή τη συσκευή σας OTP.</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.title" approved="yes">
+        <source>Enter the generated six-digit code</source>
+        <target state="final">Εισάγετε τον εξαψήφιο κωδικό που δημιουργήθηκε</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.body" approved="yes">
+        <source>This code should now be displayed on your device or in your application.</source>
+        <target state="final">Αυτός ο κώδικας θα πρέπει τώρα να εμφανίζεται στη συσκευή σας ή στην εφαρμογή σας.</target>
+      </trans-unit>
+      <trans-unit id="disable2FA" approved="yes">
+        <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
+        <target state="final">Για να απενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων, εισαγάγετε έναν έγκυρο κωδικό πρόσβασης μίας χρήσης και κάντε κλικ στο κουμπί ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ.</target>
+      </trans-unit>
+      <trans-unit id="success.title" approved="yes">
+        <source>Success!</source>
+        <target state="final">Επιτυχία!</target>
+      </trans-unit>
+      <trans-unit id="success.enable.body" approved="yes">
+        <source>Your account is now protected by a two-factor authentication.</source>
+        <target state="final">Ο λογαριασμός σας προστατεύεται πλέον με έλεγχο ταυτότητας δύο παραγόντων.</target>
+      </trans-unit>
+      <trans-unit id="success.disable.body" approved="yes">
+        <source>You disabled the two-factor authentication for your account.</source>
+        <target state="final">Απενεργοποιήσατε τον έλεγχο ταυτότητας δύο παραγόντων για το λογαριασμό σας.</target>
+      </trans-unit>
+      <trans-unit id="action.enable" approved="yes">
+        <source>Enable</source>
+        <target state="final">Ενεργοποίηση</target>
+      </trans-unit>
+      <trans-unit id="action.disable" approved="yes">
+        <source>Disable</source>
+        <target state="final">Απενεργοποίηση</target>
+      </trans-unit>
+      <trans-unit id="validator.secret.tampered" approved="yes">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target state="final">Το παραγόμενο μυστικό είναι άκυρο ή έχει αλλοιωθεί.</target>
+      </trans-unit>
+      <trans-unit id="validator.otp.notvalid" approved="yes">
+        <source>The given one-time password is invalid or has expired.</source>
+        <target state="final">Ο δοθείς κωδικός πρόσβασης μιας χρήσης είναι άκυρος ή έχει λήξει.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
