@@ -18,6 +18,7 @@ namespace Causal\MfaFrontend\Service;
 
 use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Authentication\AuthenticationService;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -42,7 +43,9 @@ class MfaAuthenticationService extends AuthenticationService
         }
 
         $secret = $mfa['totp']['secret'] ?? '';
-        $otp = GeneralUtility::_GP('mfa-frontend-otp') ?? '';
+        /** @var ServerRequestInterface $request */
+        $request = $this->authInfo['request'];
+        $otp = $request->getParsedBody()['mfa-frontend-otp'] ?? '';
 
         if ($this->verifyOneTimePassword($secret, $otp)) {
             // Store last usage of TOTP
