@@ -47,7 +47,7 @@ class MfaAuthenticationService extends AuthenticationService
         if ((new Typo3Version())->getMajorVersion() >= 12) {
             /** @var ServerRequestInterface $request */
             $request = $this->authInfo['request'];
-            $otp = $request->getParsedBody()['mfa-frontend-otp'] ?? '';
+            $otp = $request->getParsedBody()['mfa-frontend-otp'] ?? $request->getQueryParams()['mfa-frontend-otp'] ?? '';
         } else {
             $otp = GeneralUtility::_GP('mfa-frontend-otp') ?? '';
         }
