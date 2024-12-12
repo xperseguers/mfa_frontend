@@ -29,6 +29,6 @@ trait VerifyOtpTrait
             'sha1'
         );
 
-        return $totp->verifyTotp($oneTimePassword);
+        return $totp->verifyTotp($oneTimePassword, 2);
     }
 }
