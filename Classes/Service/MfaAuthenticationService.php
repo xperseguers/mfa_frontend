@@ -21,6 +21,7 @@ use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Authentication\AuthenticationService;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class MfaAuthenticationService extends AuthenticationService
@@ -43,9 +44,13 @@ class MfaAuthenticationService extends AuthenticationService
         }
 
         $secret = $mfa['totp']['secret'] ?? '';
-        /** @var ServerRequestInterface $request */
-        $request = $this->authInfo['request'];
-        $otp = $request->getParsedBody()['mfa-frontend-otp'] ?? '';
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            /** @var ServerRequestInterface $request */
+            $request = $this->authInfo['request'];
+            $otp = $request->getParsedBody()['mfa-frontend-otp'] ?? '';
+        } else {
+            $otp = GeneralUtility::_GP('mfa-frontend-otp') ?? '';
+        }
 
         if ($this->verifyOneTimePassword($secret, $otp)) {
             // Store last usage of TOTP
