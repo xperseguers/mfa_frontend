@@ -9,8 +9,6 @@ For more details,
 `read the online log <https://github.com/xperseguers/mfa_frontend/commits/main>`_.
 
 
-.. tabularcolumns:: |r|p{13.7cm}|
-
 =======  ======================================================
 Version  Changes
 =======  ======================================================
