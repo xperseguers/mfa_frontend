@@ -61,6 +61,10 @@ class DataHandler
             return;
         }
 
+        if (!isset($incomingFieldArray['tx_mfafrontend_enable'])) {
+            return;
+        }
+
         $preprocessFieldArrayDto = $this->getPreprocessFieldArrayDto(
             $incomingFieldArray,
             $table,
