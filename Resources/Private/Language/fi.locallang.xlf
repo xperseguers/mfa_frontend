@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="fi">
+    <header/>
+    <body>
+      <trans-unit id="qrImage">
+        <source>Google Authenticator QR-Code</source>
+        <target state="needs-translation">Google Authenticator QR-Code</target>
+      </trans-unit>
+      <trans-unit id="otp" approved="yes">
+        <source>One-time password</source>
+        <target state="final">Kertakäyttösalasana</target>
+      </trans-unit>
+      <trans-unit id="backend.disableAuthenticator" approved="yes">
+        <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
+        <target state="final">Jos haluat poistaa kaksitekijätodennuksen käytöstä, kytke yllä oleva kytkin pois päältä ja anna voimassa oleva kertakäyttösalasana.</target>
+      </trans-unit>
+      <trans-unit id="totp.step1" approved="yes">
+        <source>Step 1</source>
+        <target state="final">Vaihe 1</target>
+      </trans-unit>
+      <trans-unit id="totp.step2" approved="yes">
+        <source>Step 2</source>
+        <target state="final">Vaihe 2</target>
+      </trans-unit>
+      <trans-unit id="totp.step3" approved="yes">
+        <source>Step 3</source>
+        <target state="final">Vaihe 3</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.title" approved="yes">
+        <source>Scan the displayed QR code</source>
+        <target state="final">Skannaa näytetty QR-koodi</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.body" approved="yes">
+        <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
+        <target state="final">Skannaa tämä koodi OTP-sovelluksella (esim. Google Authenticator).</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.title" approved="yes">
+        <source>Copy the shared secret</source>
+        <target state="final">Kopioi jaettu salaisuus</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.body" approved="yes">
+        <source>You can also enter the shared secret manually in your OTP application or device.</source>
+        <target state="final">Voit myös syöttää jaetun salaisuuden manuaalisesti OTP-sovellukseen tai laitteeseen.</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.title" approved="yes">
+        <source>Enter the generated six-digit code</source>
+        <target state="final">Syötä luotu kuusinumeroinen koodi</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.body" approved="yes">
+        <source>This code should now be displayed on your device or in your application.</source>
+        <target state="final">Tämän koodin pitäisi nyt näkyä laitteessa tai sovelluksessa.</target>
+      </trans-unit>
+      <trans-unit id="disable2FA" approved="yes">
+        <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
+        <target state="final">Jos haluat poistaa kaksitekijätodennuksen käytöstä, anna voimassa oleva kertakäyttösalasana ja napsauta Poista käytöstä -painiketta.</target>
+      </trans-unit>
+      <trans-unit id="success.title" approved="yes">
+        <source>Success!</source>
+        <target state="final">Menestys!</target>
+      </trans-unit>
+      <trans-unit id="success.enable.body" approved="yes">
+        <source>Your account is now protected by a two-factor authentication.</source>
+        <target state="final">Tilisi on nyt suojattu kaksitekijätodennuksella.</target>
+      </trans-unit>
+      <trans-unit id="success.disable.body" approved="yes">
+        <source>You disabled the two-factor authentication for your account.</source>
+        <target state="final">Olet poistanut tilisi kaksitekijätodennuksen käytöstä.</target>
+      </trans-unit>
+      <trans-unit id="action.enable" approved="yes">
+        <source>Enable</source>
+        <target state="final">Ota käyttöön</target>
+      </trans-unit>
+      <trans-unit id="action.disable" approved="yes">
+        <source>Disable</source>
+        <target state="final">Pois käytöstä</target>
+      </trans-unit>
+      <trans-unit id="validator.secret.tampered" approved="yes">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target state="final">Generoitu salaisuus on virheellinen tai sitä on peukaloitu.</target>
+      </trans-unit>
+      <trans-unit id="validator.otp.notvalid" approved="yes">
+        <source>The given one-time password is invalid or has expired.</source>
+        <target state="final">Annettu kertakäyttösalasana on virheellinen tai vanhentunut.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
