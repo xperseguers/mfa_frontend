@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guides xmlns="https://www.phpdoc.org/guides" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.phpdoc.org/guides ../vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+        links-are-relative="true">
+    <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+               project-home="https://extensions.typo3.org/extension/mfa_frontend"
+               project-repository="https://github.com/xperseguers/mfa_frontend"
+               project-issues="https://github.com/xperseguers/mfa_frontend/issues"
+               edit-on-github-branch="main"
+               edit-on-github="xperseguers/mfa_frontend"
+               typo3-core-preferred="stable"/>
+    <project title="MFA Frontend" release="1.3.0" version="1.3" copyright="2023-2025"/>
+</guides>

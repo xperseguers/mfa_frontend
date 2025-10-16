@@ -20,7 +20,7 @@ Contribution and Links
    https://crowdin.com/project/typo3-extension-mfafrontend
 
 :Contact:
-   `@xperseguers <https://twitter.com/xperseguers>`__
+   `@xperseguers <https://x.com/xperseguers>`__
 
 
 .. _links-how-to-contribute:
@@ -31,7 +31,7 @@ How to contribute
 This extension is using the same contribution workflow as for TYPO3 Core, but
 with GitHub PRs for the review process. Please read more about the workflow in
 the
-`TYPO3 Contribution Guide <https://docs.typo3.org/m/typo3/guide-contributionworkflow/master/en-us/>`__.
+`TYPO3 Contribution Guide <https://docs.typo3.org/m/typo3/guide-contributionworkflow/main/en-us/>`__.
 
 
 .. _links-how-to-contribute-rules:
