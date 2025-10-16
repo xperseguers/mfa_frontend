@@ -41,7 +41,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-main": "1.2.x-dev",
+      "dev-main": "1.3.x-dev",
       "dev-feature/TYPO3v10": "1.1.x-dev"
     },
     "typo3/cms": {

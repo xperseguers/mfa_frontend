@@ -12,7 +12,7 @@ For more details,
 =======  ======================================================
 Version  Changes
 =======  ======================================================
-1.3.x    Compatibility with TYPO3 11 LTS - 13 LTS (with PHP 8)
+1.3.x    Compatibility with TYPO3 11 LTS - 13 LTS
 1.1.x    Add PSR-14 event to let third-party extensions allow
          a Backend user to disable MFA without providing a
          valid OTP.
