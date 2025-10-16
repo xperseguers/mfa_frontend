@@ -24,10 +24,15 @@ class TotpElement {
                 inputOtp: '[name$="[tx_mfafrontend_otp]"]',
                 formSection: '.form-section'
             },
+            iFrame = null,
+            inputEnable = null;
+
+        function init() {
             iFrame = document.querySelector(selectors.iFrame),
             inputEnable = iFrame.querySelector(selectors.inputEnable);
-
-        inputEnable.addEventListener('click', update);
+            inputEnable.addEventListener('click', update);
+            update();
+        }
 
         function update() {
             const isEnabled = inputEnable.checked;
@@ -42,7 +47,7 @@ class TotpElement {
         }
 
         // If we are early in the party
-        document.addEventListener('DOMContentLoaded', update);
+        document.addEventListener('DOMContentLoaded', init);
         // If late, thus "on time"
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
             update();
