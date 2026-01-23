@@ -150,6 +150,10 @@ class SetupController extends ActionController
                 $secretKey = $mfa['totp']['secret'] ?? '';
             }
 
+            if ($this->request->hasArgument(SetupForm::FORM_NAME)) {
+                $secretKey = $this->request->getArgument(SetupForm::FORM_NAME)['secret'] ?? null;
+            }
+
             $this->totpSecret = $this->secretFactory->create(
                 $this->getIssuer('fe_users'),
                 $this->getFrontendUser()['username'],
