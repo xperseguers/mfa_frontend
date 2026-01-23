@@ -33,7 +33,7 @@ MFA Frontend
       MFA, multi-factor, 2FA, authentication, otp, one-time, secure, security, protection
 
    :Copyright:
-      2023-2025
+      2023-2026
 
    :Author:
       Xavier Perseguers
