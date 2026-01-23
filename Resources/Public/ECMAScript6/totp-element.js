@@ -50,7 +50,7 @@ class TotpElement {
         document.addEventListener('DOMContentLoaded', init);
         // If late, thus "on time"
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
-            update();
+            init();
         }
     }
 }
