@@ -12,6 +12,8 @@ For more details,
 =======  ======================================================
 Version  Changes
 =======  ======================================================
+2.0.x    Dedicated CType for the setup of MFA, will allow
+         compatibility with TYPO3 14 LTS and beyond
 1.3.x    Compatibility with TYPO3 11 LTS - 13 LTS
 1.1.x    Add PSR-14 event to let third-party extensions allow
          a Backend user to disable MFA without providing a

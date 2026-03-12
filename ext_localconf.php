@@ -28,7 +28,8 @@ defined('TYPO3') || die();
         ],
         [
             \Causal\MfaFrontend\Controller\SetupController::class => 'index,update',
-        ]
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     // Register hooks into \TYPO3\CMS\Core\DataHandling\DataHandler
@@ -46,4 +47,7 @@ defined('TYPO3') || die();
         'priority' => 40,
         'class' => \Causal\MfaFrontend\Backend\Form\Element\TotpElement::class,
     ];
+
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['TxMfaFrontendPlugins']
+        = \Causal\MfaFrontend\Updates\PluginsUpdater::class;
 })('mfa_frontend');
