@@ -26,13 +26,17 @@ use TYPO3\CMS\Backend\Form\NodeFactory;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Page\JavaScriptModuleInstruction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractGenericObjectValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
+use TYPO3\CMS\Fluid\View\FluidViewFactory;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 if ((new Typo3Version())->getMajorVersion() >= 13) {
     abstract class ParentTotpElementClass extends AbstractFormElement {
         public function __construct(
+            protected readonly FluidViewFactory $viewFactory,
             protected readonly EventDispatcherInterface $eventDispatcher,
             protected readonly SecretFactory $secretFactory
         )
@@ -65,7 +69,11 @@ class TotpElement extends ParentTotpElementClass
     public function render(): array
     {
         $resultArray = $this->initializeResultArray();
-        $templateView = $this->initializeTemplateView();
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            $view = $this->initializeView();
+        } else {
+            $view = $this->initializeStandaloneView();
+        }
         $isEnabled = $this->isTotpEnabled();
         $tableName = $this->data['tableName'] ?? null;
         $recordUid = $this->data['databaseRow']['uid'] ?? null;
@@ -101,19 +109,36 @@ class TotpElement extends ParentTotpElementClass
             $prefix .= sprintf('[%s]', $recordUid);
         }
 
-        $templateView->assignMultiple([
+        $view->assignMultiple([
             'typo3Version' => (new Typo3Version())->getMajorVersion(),
             'prefix' => $prefix,
             'isEnabled' => $isEnabled,
             'totpSecret' => $this->getTotpSecret(),
         ]);
 
-        $resultArray['html'] = $templateView->render();
+        $resultArray['html'] = $view->render();
 
         return $resultArray;
     }
 
-    protected function initializeTemplateView(): StandaloneView
+    protected function initializeView(): ViewInterface
+    {
+        $resourcesPath = 'EXT:mfa_frontend/Resources/Private/';
+
+        $viewFactoryData = new ViewFactoryData(
+            templatePathAndFilename: $resourcesPath . 'Templates/Backend/TotpElement.html',
+            partialRootPaths: [$resourcesPath . 'Partials/'],
+            layoutRootPaths: [$resourcesPath . 'Layouts/']
+        );
+
+        return $this->viewFactory->create($viewFactoryData);
+    }
+
+    /**
+     * @return StandaloneView
+     * @deprecated since TYPO3 v13
+     */
+    protected function initializeStandaloneView(): StandaloneView
     {
         $resourcesPath = 'EXT:mfa_frontend/Resources/Private/';
 
