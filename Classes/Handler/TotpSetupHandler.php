@@ -22,6 +22,8 @@ use Causal\MfaFrontend\Domain\Model\TotpSettings;
 use Causal\MfaFrontend\Event\DisableTotpEvent;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class TotpSetupHandler
@@ -68,11 +70,18 @@ class TotpSetupHandler
         $newSettings = TotpSettings::createFromVirtualData($fieldArray);
 
         if ($this->isExistingUser()) {
-            $record = $this->preprocessFieldArrayDto->getDataHandler()->recordInfo(
-                $this->preprocessFieldArrayDto->getTable(),
-                $this->preprocessFieldArrayDto->getId(),
-                '*'
-            );
+            if ((new Typo3Version())->getMajorVersion() >= 14) {
+                $record = BackendUtility::getRecord(
+                    $this->preprocessFieldArrayDto->getTable(),
+                    $this->preprocessFieldArrayDto->getId()
+                );
+            } else {
+                $record = $this->preprocessFieldArrayDto->getDataHandler()->recordInfo(
+                    $this->preprocessFieldArrayDto->getTable(),
+                    $this->preprocessFieldArrayDto->getId(),
+                    '*'
+                );
+            }
             if ($record !== null) {
                 $this->totpSettingsDto->setOldSettings(
                     TotpSettings::createFromRecord($record, $this->preprocessFieldArrayDto->getTable())
