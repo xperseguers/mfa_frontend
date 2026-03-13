@@ -23,12 +23,6 @@ Robin "codeFareith" von den Bergen for the inspiration!
   lose/change their phone or access to their MFA application and will need to
   be helped by an administrator.
 
-## Planned features
-
-- Support for backup codes.
-- Support for other MFA providers (e.g., Yubikey).
-
-
 ## License
 
 [GNU Public License](https://opensource.org/license/gpl-3-0/)
