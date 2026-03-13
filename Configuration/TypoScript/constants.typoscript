@@ -19,7 +19,18 @@ plugin {
     }
 }
 
-[typo3.branch < "12.0"]
+[typo3.branch == "12.4"]
+    plugin {
+        tx_mfafrontend {
+            tx_felogin_login {
+                view {
+                    templateRootPath = EXT:mfa_frontend/Resources/Private/EXT_felogin/Templates/TYPO3v12/
+                }
+            }
+        }
+    }
+[end]
+[typo3.branch == "11.5"]
     plugin {
         tx_mfafrontend {
             tx_felogin_login {
@@ -29,4 +40,4 @@ plugin {
             }
         }
     }
-[global]
+[end]

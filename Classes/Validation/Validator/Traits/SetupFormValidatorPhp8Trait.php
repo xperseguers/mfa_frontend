@@ -18,6 +18,8 @@ namespace Causal\MfaFrontend\Validation\Validator\Traits;
 
 use Causal\MfaFrontend\Domain\Form\SetupForm;
 use Causal\MfaFrontend\Traits\VerifyOtpTrait;
+use TYPO3\CMS\Core\Crypto\HashService;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 trait SetupFormValidatorPhp8Trait
@@ -40,7 +42,16 @@ trait SetupFormValidatorPhp8Trait
         $oneTimePassword = $object->getOneTimePassword();
         $checksum = $object->getChecksum();
 
-        if ($secret === '' || !hash_equals(GeneralUtility::hmac($secret, 'totp-setup'), $checksum)) {
+        if ($secret !== '') {
+            if ((new Typo3Version())->getMajorVersion() >= 13) {
+                $hashService = GeneralUtility::makeInstance(HashService::class);
+                $referenceChecksum = $hashService->hmac($secret, 'totp-setup');
+            } else {
+                $referenceChecksum = GeneralUtility::hmac($secret, 'totp-setup');
+            }
+        }
+
+        if ($secret === '' || !hash_equals($referenceChecksum, $checksum)) {
             $this->addError(
                 $this->translateErrorMessage(
                     'validator.secret.tampered',

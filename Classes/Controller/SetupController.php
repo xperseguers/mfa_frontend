@@ -27,6 +27,7 @@ use Causal\MfaFrontend\Traits\MfaFieldTrait;
 use Causal\MfaFrontend\Validation\Validator\SetupFormValidator;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Crypto\HashService;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -212,8 +213,14 @@ class SetupController extends ActionController
     protected function getSetupForm(): SetupForm
     {
         $secret = $this->getTotpSecret()->getSecretKey();
+
         // Generate hmac of the secret to prevent it from being changed in the setup form
-        $checksum = GeneralUtility::hmac($secret, 'totp-setup');
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            $hashService = GeneralUtility::makeInstance(HashService::class);
+            $checksum = $hashService->hmac($secret, 'totp-setup');
+        } else {
+            $checksum = GeneralUtility::hmac($secret, 'totp-setup');
+        }
 
         return GeneralUtility::makeInstance(
             SetupForm::class,

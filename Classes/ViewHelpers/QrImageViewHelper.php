@@ -21,32 +21,29 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use Causal\MfaFrontend\Domain\Immutable\TotpSecret;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Exception;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
 
 class QrImageViewHelper extends AbstractTagBasedViewHelper
 {
-    use CompileWithContentArgumentAndRenderStatic;
-
     protected $tagName = 'img';
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerUniversalTagAttributes();
+
+        if ((new Typo3Version())->getMajorVersion() < 13) {
+            $this->registerUniversalTagAttributes();
+        }
+
         $this->registerArgument('secret', TotpSecret::class, 'TOTP secret');
         $this->registerArgument('alt', 'string', 'Specifies an alternate text for the image', false, 'QR code');
         $this->registerArgument('size', 'int', 'width/height of the QR code', false, 200);
     }
 
-    /**
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     */
-    public function render()
+    public function render(): string
     {
         /** @var TotpSecret $totpSecret */
         $totpSecret = $this->arguments['secret'];
