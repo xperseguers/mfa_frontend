@@ -5,23 +5,23 @@
     <body>
       <trans-unit id="mfa_auth">
         <source>Multi-Factor Authentication</source>
-        <target state="needs-translation">Multi-Factor Authentication</target>
+        <target state="translated">Többfaktoros hitelesítés</target>
       </trans-unit>
       <trans-unit id="fe_users.tx_mfafrontend_enable">
         <source>Enable Time-based One Time Password (TOTP)</source>
-        <target state="needs-translation">Enable Time-based One Time Password (TOTP)</target>
+        <target state="translated">Időalapú egyszeri jelszó (TOTP) engedélyezése</target>
       </trans-unit>
       <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin">
         <source>Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</source>
-        <target state="needs-translation">Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</target>
+        <target state="translated">Fontos: Rendszergazdaként nem kell érvényes egyszeri jelszót megadnia a kétfaktoros hitelesítés letiltásához.</target>
       </trans-unit>
       <trans-unit id="fe_users.tx_mfafrontend_secret">
         <source>TOTP configuration</source>
-        <target state="needs-translation">TOTP configuration</target>
+        <target state="translated">TOTP konfiguráció</target>
       </trans-unit>
       <trans-unit id="plugin.setup">
         <source>Two-Factor Authentication (2FA) Setup</source>
-        <target state="needs-translation">Two-Factor Authentication (2FA) Setup</target>
+        <target state="translated">Kétfaktoros hitelesítés (2FA) beállítása</target>
       </trans-unit>
     </body>
   </file>
