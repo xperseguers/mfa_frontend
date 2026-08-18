@@ -1,7 +1,7 @@
 {
   "name": "causal/mfa-frontend",
   "type": "typo3-cms-extension",
-  "description": "Enable MFA (Multi-Factor Authentication) for Frontend accounts.",
+  "description": "MFA Frontend - Enable MFA (Multi-Factor Authentication) for Frontend accounts.",
   "keywords": [
     "TYPO3 CMS",
     "MFA",
