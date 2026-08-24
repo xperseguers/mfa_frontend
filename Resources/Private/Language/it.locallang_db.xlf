@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="it">
+    <header/>
+    <body>
+      <trans-unit id="mfa_auth" approved="yes">
+        <source>Multi-Factor Authentication</source>
+        <target state="final">Autenticazione a più fattori</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_enable" approved="yes">
+        <source>Enable Time-based One Time Password (TOTP)</source>
+        <target state="final">Abilitazione della password a tempo (TOTP)</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin" approved="yes">
+        <source>Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</source>
+        <target state="final">Importante: in qualità di amministratore, non è necessario immettere una password unica valida per disattivare l'Autenticazione a due fattori.</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_secret" approved="yes">
+        <source>TOTP configuration</source>
+        <target state="final">Configurazione TOTP</target>
+      </trans-unit>
+      <trans-unit id="plugin.setup" approved="yes">
+        <source>Two-Factor Authentication (2FA) Setup</source>
+        <target state="final">Impostazione dell'autenticazione a due fattori (2FA)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

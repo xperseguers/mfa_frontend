@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="hu">
+    <header/>
+    <body>
+      <trans-unit id="qrImage">
+        <source>Google Authenticator QR-Code</source>
+        <target state="translated">Google Authenticator QR-kód</target>
+      </trans-unit>
+      <trans-unit id="otp">
+        <source>One-time password</source>
+        <target state="translated">Egyszeri jelszó</target>
+      </trans-unit>
+      <trans-unit id="backend.disableAuthenticator">
+        <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
+        <target state="translated">A kétfaktoros hitelesítés letiltásához kapcsolja ki a fenti kapcsolót, és adjon meg egy érvényes egyszeri jelszót.</target>
+      </trans-unit>
+      <trans-unit id="totp.step1">
+        <source>Step 1</source>
+        <target state="translated">1. lépés</target>
+      </trans-unit>
+      <trans-unit id="totp.step2">
+        <source>Step 2</source>
+        <target state="translated">2. lépés</target>
+      </trans-unit>
+      <trans-unit id="totp.step3">
+        <source>Step 3</source>
+        <target state="translated">3. lépés</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.title">
+        <source>Scan the displayed QR code</source>
+        <target state="translated">Olvassa be a megjelenített QR-kódot</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.body">
+        <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
+        <target state="translated">Olvassa be ezt a kódot az OTP-alkalmazásával (pl. Google Authenticator).</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.title">
+        <source>Copy the shared secret</source>
+        <target state="translated">Másolja ki a megosztott titkot</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.body">
+        <source>You can also enter the shared secret manually in your OTP application or device.</source>
+        <target state="translated">A megosztott titkot manuálisan is megadhatja az OTP-alkalmazásában vagy az eszközén.</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.title">
+        <source>Enter the generated six-digit code</source>
+        <target state="translated">Adja meg a generált hatjegyű kódot</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.body">
+        <source>This code should now be displayed on your device or in your application.</source>
+        <target state="translated">Ennek a kódnak most már meg kell jelennie az eszközén vagy az alkalmazásában.</target>
+      </trans-unit>
+      <trans-unit id="disable2FA">
+        <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
+        <target state="translated">A kétfaktoros hitelesítés letiltásához adjon meg egy érvényes egyszeri jelszót, és kattintson a LETILTÁS gombra.</target>
+      </trans-unit>
+      <trans-unit id="success.title">
+        <source>Success!</source>
+        <target state="translated">Sikeres!</target>
+      </trans-unit>
+      <trans-unit id="success.enable.body">
+        <source>Your account is now protected by a two-factor authentication.</source>
+        <target state="translated">Fiókja mostantól kétfaktoros hitelesítéssel védett.</target>
+      </trans-unit>
+      <trans-unit id="success.disable.body">
+        <source>You disabled the two-factor authentication for your account.</source>
+        <target state="translated">Letiltotta a kétfaktoros hitelesítést a fiókjához.</target>
+      </trans-unit>
+      <trans-unit id="action.enable">
+        <source>Enable</source>
+        <target state="translated">Engedélyezés</target>
+      </trans-unit>
+      <trans-unit id="action.disable">
+        <source>Disable</source>
+        <target state="translated">Letiltás</target>
+      </trans-unit>
+      <trans-unit id="validator.secret.tampered">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target state="translated">A generált titok érvénytelen, vagy illetéktelenül módosították.</target>
+      </trans-unit>
+      <trans-unit id="validator.otp.notvalid">
+        <source>The given one-time password is invalid or has expired.</source>
+        <target state="translated">A megadott egyszeri jelszó érvénytelen vagy lejárt.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="fi">
+    <header/>
+    <body>
+      <trans-unit id="mfa_auth" approved="yes">
+        <source>Multi-Factor Authentication</source>
+        <target state="final">Monitekijätodennus</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_enable" approved="yes">
+        <source>Enable Time-based One Time Password (TOTP)</source>
+        <target state="final">Aikapohjaisen kertakäyttösalasanan (TOTP) käyttöönotto</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_enable.descriptionAdmin">
+        <source>Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</source>
+        <target state="needs-translation">Important: As an administrator, you do not need to enter a valid one-time password to disable the Two-Factor Authentication.</target>
+      </trans-unit>
+      <trans-unit id="fe_users.tx_mfafrontend_secret">
+        <source>TOTP configuration</source>
+        <target state="needs-translation">TOTP configuration</target>
+      </trans-unit>
+      <trans-unit id="plugin.setup" approved="yes">
+        <source>Two-Factor Authentication (2FA) Setup</source>
+        <target state="final">Kaksitekijätodennuksen (2FA) käyttöönotto</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
