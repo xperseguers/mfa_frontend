@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2023-10-19T20:29:03Z" product-name="mfa_frontend" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="qrImage">
+        <source>Google Authenticator QR-Code</source>
+        <target>crwdns297162:0crwdne297162:0</target>
+      </trans-unit>
+      <trans-unit id="otp">
+        <source>One-time password</source>
+        <target>crwdns297166:0crwdne297166:0</target>
+      </trans-unit>
+      <trans-unit id="backend.disableAuthenticator">
+        <source>To disable the Two-Factor Authentication, toggle the switch above off and enter a valid one-time password.</source>
+        <target>crwdns297168:0crwdne297168:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step1">
+        <source>Step 1</source>
+        <target>crwdns297218:0crwdne297218:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step2">
+        <source>Step 2</source>
+        <target>crwdns297220:0crwdne297220:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step3">
+        <source>Step 3</source>
+        <target>crwdns297222:0crwdne297222:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.title">
+        <source>Scan the displayed QR code</source>
+        <target>crwdns297224:0crwdne297224:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step1.body">
+        <source>Scan this code with your OTP application (e.g., Google Authenticator).</source>
+        <target>crwdns297226:0crwdne297226:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.title">
+        <source>Copy the shared secret</source>
+        <target>crwdns297228:0crwdne297228:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step2.body">
+        <source>You can also enter the shared secret manually in your OTP application or device.</source>
+        <target>crwdns297230:0crwdne297230:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.title">
+        <source>Enter the generated six-digit code</source>
+        <target>crwdns297232:0crwdne297232:0</target>
+      </trans-unit>
+      <trans-unit id="totp.step3.body">
+        <source>This code should now be displayed on your device or in your application.</source>
+        <target>crwdns297234:0crwdne297234:0</target>
+      </trans-unit>
+      <trans-unit id="disable2FA">
+        <source>To disable the Two-Factor Authentication, enter a valid one-time password and click the DISABLE button.</source>
+        <target>crwdns297182:0crwdne297182:0</target>
+      </trans-unit>
+      <trans-unit id="success.title">
+        <source>Success!</source>
+        <target>crwdns297184:0crwdne297184:0</target>
+      </trans-unit>
+      <trans-unit id="success.enable.body">
+        <source>Your account is now protected by a two-factor authentication.</source>
+        <target>crwdns297186:0crwdne297186:0</target>
+      </trans-unit>
+      <trans-unit id="success.disable.body">
+        <source>You disabled the two-factor authentication for your account.</source>
+        <target>crwdns297188:0crwdne297188:0</target>
+      </trans-unit>
+      <trans-unit id="action.enable">
+        <source>Enable</source>
+        <target>crwdns297190:0crwdne297190:0</target>
+      </trans-unit>
+      <trans-unit id="action.disable">
+        <source>Disable</source>
+        <target>crwdns297192:0crwdne297192:0</target>
+      </trans-unit>
+      <trans-unit id="validator.secret.tampered">
+        <source>The generated secret is invalid or has been tampered with.</source>
+        <target>crwdns297398:0crwdne297398:0</target>
+      </trans-unit>
+      <trans-unit id="validator.otp.notvalid">
+        <source>The given one-time password is invalid or has expired.</source>
+        <target>crwdns297194:0crwdne297194:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
